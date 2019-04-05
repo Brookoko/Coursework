@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Enemy
+  - EnemyHitBox
+  - PlayerHitBox
+  - CM
+  - EnterPoint
+  - PlayerAttackHitBox
+  - Projectile
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Foreground
+  - Background
+  - Player
+  - Enemy
+  - PlayerHitbox
+  - "EnemyH\x13itbox"
+  - PlayerAttack
+  - EnemyAttack
+  - Projectiles
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Background
+    uniqueID: 68434497
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Entity
+    uniqueID: 1842756327
+    locked: 0
+  - name: Foreground
+    uniqueID: 441626611
+    locked: 0
