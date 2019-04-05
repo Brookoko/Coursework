@@ -13,6 +13,7 @@
 **/.idea/**/dataSources.local.xml
 **/.idea/**/sqlDataSources.xml
 **/.idea/**/dynamic.xml
+**/.idea/**/.idea/*.xml
 
 # Rider
 # Rider auto-generates .iml files, and contentModel.xml
@@ -52,6 +53,7 @@ Desktop.ini
 
 # Visual Studio cache directory
 .vs/
+.vscode/
 
 # Gradle cache directory
 .gradle/
