@@ -1,6 +1,7 @@
 using Script.Effects;
 using Script.StateMachineUtil;
 using Script.MoveControllers;
+using Script.Player.StateInput;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -16,6 +17,7 @@ namespace Script.Player.States
         protected MoveController controller;
         protected Rigidbody2D rb;
         protected IEffect effect;
+        protected IInputHandler input;
 
         private Collider2D[] cols = new Collider2D[1];
         private bool wasOnGround;
@@ -28,6 +30,7 @@ namespace Script.Player.States
             animator = player.GetComponent<Animator>();
             rb = player.GetComponent<Rigidbody2D>();
             effect = GetComponent<IEffect>();
+            input = GetComponent<IInputHandler>();
             enabled = false;
         }
 

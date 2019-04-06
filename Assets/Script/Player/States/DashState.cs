@@ -1,39 +1,27 @@
+using Script.Player.StateInput;
 using UnityEngine;
+using Input = UnityEngine.Input;
 
 namespace Script.Player.States
 {
     public class DashState : BasePlayerState
     {
         [SerializeField] private float dashVelocity = 100;
-        [SerializeField] private int dashNumber = 1;
         [SerializeField] private float dashTime = 1f;
         [SerializeField] private GameObject attackHitBox;
 
-        private static int currentDashNumber;
         private float timer;
         private Transform hitbox;
         private float gravity;
-
+        
         public override string Name { get; } = "Dash";
 
-        private void Start()
-        {
-            currentDashNumber = dashNumber - 1;
-        }
-
-        private void ResetDash()
-        {
-            currentDashNumber = dashNumber;
-        }
-        
         public override bool Enter()
         {
-            if (currentDashNumber <= 0) return false;
-            base.Enter();
+            if (!input.ValidateInput()) return false;
             if (hitbox) Destroy(hitbox.gameObject);
             hitbox = Instantiate(attackHitBox, player.transform).transform;
             timer = dashTime;
-            currentDashNumber--;
             ChangeGravity();
             DashVelocity();
             animator.SetBool("isDashing", true);
@@ -71,7 +59,7 @@ namespace Script.Player.States
         
         private void Flip(float x)
         {
-            controller.Move(x * 0.01f);
+            controller.Move(x * 0.000001f);
         }
 
         public override void Exit()
@@ -79,7 +67,6 @@ namespace Script.Player.States
             animator.SetBool("isDashing", false);           
             ChangeGravity();
             if (hitbox) Destroy(hitbox.gameObject);
-            if (IsOnGround()) ResetDash();
             effect.Stop();
             base.Exit();
         }

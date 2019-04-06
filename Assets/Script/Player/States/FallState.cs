@@ -1,4 +1,6 @@
+using Script.Player.StateInput;
 using UnityEngine;
+using Input = Script.Player.StateInput.Input;
 
 namespace Script.Player.States
 {
@@ -18,14 +20,10 @@ namespace Script.Player.States
 
         private void Update()
         {
+            if (IsOnGround()) sm.ChangeState("Idle");
             movement = Input.GetAxisRaw("Horizontal");
             rb.velocity = Vector2.MoveTowards(rb.velocity, new Vector2(0, rb.velocity.y), 0.6f);
-            if (IsOnGround())
-                sm.ChangeState("Idle");
-            if (Input.GetButtonDown("Jump"))
-                sm.ChangeState("Jump");
-            else if (Input.GetButtonDown("Dash"))
-                sm.ChangeState("Dash");
+            input.Handle();
         }
 
         private void FixedUpdate()

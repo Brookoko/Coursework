@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using Input = Script.Player.StateInput.Input;
 
 namespace Script.Scene
 {
@@ -19,7 +18,7 @@ namespace Script.Scene
 
         public void Transite(int levelIndex)
         {
-            Player.Input.Disable();
+            Input.Disable();
             this.levelIndex = levelIndex;
             anim.SetTrigger("Fade");
         }
@@ -31,7 +30,7 @@ namespace Script.Scene
 
         private void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, LoadSceneMode mode)
         {
-            Player.Input.Enable();
+            Input.Enable();
             player = GameObject.FindWithTag("Player");
             GameObject enter = GameObject.FindWithTag("EnterPoint");
             if (player && enter)

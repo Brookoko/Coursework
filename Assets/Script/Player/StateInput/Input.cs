@@ -1,4 +1,4 @@
-namespace Script.Player
+namespace Script.Player.StateInput
 {
     public class Input
     {
