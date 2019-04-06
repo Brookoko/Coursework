@@ -3,30 +3,28 @@ using UnityEngine;
 
 namespace Script.Player.StateInput
 {
-    public class JumpInputHandler : MonoBehaviour, IInputHandler
+    public class JumpInputHandler : BaseInputHandler
     {
         [SerializeField] private int jumpNumber = 2;
 
         private int currentJumpNumber;
-        private StateMachine sm;
         private Rigidbody2D rb;
         private Vector3 vel = Vector3.zero;
 
-        private void Awake()
+        private void Start()
         {
             var player = GameObject.FindWithTag("Player");
             rb = player.GetComponent<Rigidbody2D>();
-            sm = transform.parent.GetComponent<StateMachine>();
             currentJumpNumber = jumpNumber;
         }
 
-        public bool ValidateInput()
+        public override bool ValidateInput()
         {
             if (Mathf.Abs(rb.velocity.y) > 0.01f && currentJumpNumber == jumpNumber) currentJumpNumber--;
             return currentJumpNumber-- > 0;
         }
         
-        public void Handle()
+        public override void Handle()
         {
             if (Input.GetButtonDown("Jump") && currentJumpNumber > 0)
                 sm.ChangeState("Jump");

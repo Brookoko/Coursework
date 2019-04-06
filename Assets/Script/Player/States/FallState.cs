@@ -20,7 +20,7 @@ namespace Script.Player.States
 
         private void Update()
         {
-            if (IsOnGround()) sm.ChangeState("Idle");
+            if (player.IsOnGround()) sm.ChangeState("Idle");
             movement = Input.GetAxisRaw("Horizontal");
             rb.velocity = Vector2.MoveTowards(rb.velocity, new Vector2(0, rb.velocity.y), 0.6f);
             input.Handle();
@@ -28,8 +28,7 @@ namespace Script.Player.States
 
         private void FixedUpdate()
         {
-            if (airControl)
-                controller.Move(movement * Time.fixedDeltaTime);
+            if (airControl) player.Move(movement * Time.fixedDeltaTime);
         }
 
         public override void Exit()

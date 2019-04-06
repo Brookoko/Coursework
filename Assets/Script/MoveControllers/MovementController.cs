@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Script.MoveControllers
 {
-    public class MovementController : MonoBehaviour, MoveController {
+    public class MovementController : MonoBehaviour, IMoveController {
         [Range(0, .3f)] [SerializeField] private float movementSmoothing = .05f;
         public float speed = 20f;
     

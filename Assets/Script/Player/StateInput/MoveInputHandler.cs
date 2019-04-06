@@ -1,23 +1,10 @@
-using Script.StateMachineUtil;
 using UnityEngine;
 
 namespace Script.Player.StateInput
 {
-    public class MoveInputHandler : MonoBehaviour, IInputHandler
+    public class MoveInputHandler : BaseInputHandler
     {
-        private StateMachine sm;
-
-        private void Awake()
-        {
-            sm = transform.parent.GetComponent<StateMachine>();
-        }
-
-        public bool ValidateInput()
-        {
-            return true;
-        }
-        
-        public void Handle()
+        public override void Handle()
         {
             if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) < 0.01)
                 sm.ChangeState("Idle");

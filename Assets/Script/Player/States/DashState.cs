@@ -38,6 +38,7 @@ namespace Script.Player.States
 
             timer -= Time.deltaTime;
             hitbox.position = player.transform.position;
+            input.Handle();
         }
         
         private void ChangeGravity()
@@ -59,7 +60,7 @@ namespace Script.Player.States
         
         private void Flip(float x)
         {
-            controller.Move(x * 0.000001f);
+            player.Move(x * 0.000001f);
         }
 
         public override void Exit()

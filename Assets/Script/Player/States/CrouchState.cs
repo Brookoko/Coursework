@@ -27,10 +27,9 @@ namespace Script.Player.States
 
         private void FixedUpdate()
         {
-            var col = Physics2D.OverlapCircle(stats.ceilingCheck.position, stats.radius, stats.whatIsGround);
-            if (!(col || Input.GetButton("Crouch"))) sm.ChangeState("Idle");
+            if (!(player.IsHitCeil() || Input.GetButton("Crouch"))) sm.ChangeState("Idle");
         
-            controller.Move(movement * Time.fixedDeltaTime);
+            player.Move(movement * Time.fixedDeltaTime);
         }
 
         public override void Exit()

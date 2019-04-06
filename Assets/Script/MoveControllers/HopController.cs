@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Script.MoveControllers
 {
-    public class HopController : MonoBehaviour, MoveController
+    public class HopController : MonoBehaviour, IMoveController
     {
         [SerializeField] private float jumpHeight;
         [SerializeField] private float jumpLength;

@@ -15,7 +15,7 @@ namespace Script.Player.States
 
         private void Update()
         {
-            controller.Move(0);
+            player.Move(0);
             input.Handle();
         }
     }

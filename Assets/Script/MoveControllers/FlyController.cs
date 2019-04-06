@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Script.MoveControllers
 {
-    public class FlyController : MonoBehaviour, MoveController {
+    public class FlyController : MonoBehaviour, IMoveController {
         [Range(0, .3f)] [SerializeField] private float movementSmoothing = .05f;
         public float horizontalSpeed;
         public float verticalSpeed;

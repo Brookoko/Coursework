@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Script.MoveControllers
 {
-    public interface MoveController
+    public interface IMoveController
     {
         void Move(float move);
     }

@@ -2,17 +2,28 @@ using UnityEngine;
 
 namespace Script.Player.StateInput
 {
-    public class DashInputHandler : MonoBehaviour, IInputHandler
+    public class DashInputHandler : BaseInputHandler
     {
         [SerializeField] private int dashNumber = 1;
-        private static int currentDashNumber;
+        private int currentDashNumber;
+        private Player player;
 
-        public bool ValidateInput()
+        private void Start()
         {
+            currentDashNumber = dashNumber;
+            player = GameObject.FindWithTag("Player").GetComponent<Player>();
+        }
+
+        public override bool ValidateInput()
+        {
+            Debug.Log(currentDashNumber);
             return currentDashNumber-- > 0;
         }
 
-        public void Handle() {}
+        public override void Handle()
+        {
+            if (player.IsOnGround()) ResetDash();
+        }
         
         public void ResetDash()
         {

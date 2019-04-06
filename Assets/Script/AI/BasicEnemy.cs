@@ -3,17 +3,17 @@ using UnityEngine;
 
 namespace Script.AI
 {
-    [RequireComponent(typeof(IEntityReaction), typeof(MoveController))]
+    [RequireComponent(typeof(IEntityReaction), typeof(IMoveController))]
     public class BasicEnemy : MonoBehaviour , IEnemy
     {
         protected Transform player;
         private IEntityReaction behaviourOnEntity;
-        private MoveController controller;
+        private IMoveController controller;
 
         private void Start()
         {
             player = GameObject.FindWithTag("Player").transform;
-            controller = GetComponent<MoveController>();
+            controller = GetComponent<IMoveController>();
             behaviourOnEntity = GetComponent<IEntityReaction>();
         }
 

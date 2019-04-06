@@ -28,14 +28,12 @@ namespace Script.Effects
             trail.enabled = true;
             StartCoroutine(shake.Shake(0.4f, 2f, 0.4f));
             pos = player.position;
-            cor = StartCoroutine(Trail());
         }
 
         public void Stop()
         {
             trail.enabled = false;
             particle.Stop();
-            StopCoroutine(cor);
         }
 
         private IEnumerator Trail()

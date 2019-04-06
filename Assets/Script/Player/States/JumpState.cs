@@ -46,8 +46,7 @@ namespace Script.Player.States
         
         private void FixedUpdate()
         {
-            controller.Move(movement * Time.fixedDeltaTime);
-            IsOnGround();
+            player.Move(movement * Time.fixedDeltaTime);
         }
         
         public override void Exit()
