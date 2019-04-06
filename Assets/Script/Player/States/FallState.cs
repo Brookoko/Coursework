@@ -20,7 +20,8 @@ namespace Script.Player.States
         {
             movement = Input.GetAxisRaw("Horizontal");
             rb.velocity = Vector2.MoveTowards(rb.velocity, new Vector2(0, rb.velocity.y), 0.6f);
-            IsOnGround();
+            if (IsOnGround())
+                sm.ChangeState("Idle");
             if (Input.GetButtonDown("Jump"))
                 sm.ChangeState("Jump");
             else if (Input.GetButtonDown("Dash"))

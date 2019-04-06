@@ -28,7 +28,6 @@ namespace Script.Player.States
         public void ResetJumps()
         {
             currentJumpNumber = jumpNumber;
-            effect.Play();
             sm.ChangeState("Idle");
         }
 
