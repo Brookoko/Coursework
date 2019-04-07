@@ -9,13 +9,6 @@ namespace Script.Player.States
 
         public override string Name { get; } = "Move";
 
-        public override bool Enter()
-        {
-            animator.SetFloat("Speed", 1f);
-            effect.Play();
-            return base.Enter();
-        }
-
         private void Update()
         {        
             movement = StateInput.Input.GetAxisRaw("Horizontal");
@@ -25,12 +18,6 @@ namespace Script.Player.States
         private void FixedUpdate()
         {
             player.Move(movement * Time.fixedDeltaTime);
-        }
-
-        public override void Exit()
-        {
-            effect.Stop();
-            base.Exit();
         }
     }
 }

@@ -7,12 +7,6 @@ namespace Script.Player.States
     {
         public override string Name { get; } = "Idle";
 
-        public override bool Enter()
-        {
-            animator.SetFloat("Speed", 0f);
-            return base.Enter();
-        }
-
         private void Update()
         {
             player.Move(0);

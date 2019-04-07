@@ -16,7 +16,6 @@ namespace Script.Player.StateInput
 
         public override bool ValidateInput()
         {
-            Debug.Log(currentDashNumber);
             return currentDashNumber-- > 0;
         }
 

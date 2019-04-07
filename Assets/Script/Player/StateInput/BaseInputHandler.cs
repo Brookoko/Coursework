@@ -7,7 +7,6 @@ namespace Script.Player.StateInput
     public class BaseInputHandler : MonoBehaviour, IInputHandler
     {
         protected StateMachine sm;
-        protected IMoveController controller;
 
         private void Awake()
         {

@@ -24,8 +24,6 @@ namespace Script.Player.States
             timer = dashTime;
             ChangeGravity();
             DashVelocity();
-            animator.SetBool("isDashing", true);
-            effect.Play();
             return base.Enter();
         }
 
@@ -38,7 +36,6 @@ namespace Script.Player.States
 
             timer -= Time.deltaTime;
             hitbox.position = player.transform.position;
-            input.Handle();
         }
         
         private void ChangeGravity()
@@ -65,10 +62,8 @@ namespace Script.Player.States
 
         public override void Exit()
         {
-            animator.SetBool("isDashing", false);           
             ChangeGravity();
             if (hitbox) Destroy(hitbox.gameObject);
-            effect.Stop();
             base.Exit();
         }
     }

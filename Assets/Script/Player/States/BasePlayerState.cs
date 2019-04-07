@@ -9,20 +9,19 @@ namespace Script.Player.States
 {
     public class BasePlayerState : BaseState
     {
+        [SerializeField] private UnityEvent OnEnter;
+        [SerializeField] private UnityEvent OnExit;
+
         protected Player player;
         protected StateMachine sm;
-        protected Animator animator;
         protected Rigidbody2D rb;
-        protected IEffect effect;
         protected IInputHandler input;
 
         protected void Awake() {
             var obj = GameObject.FindGameObjectWithTag("Player");
             player = obj.GetComponent<Player>();
             sm = obj.GetComponentInChildren<StateMachine>();
-            animator = obj.GetComponent<Animator>();
             rb = obj.GetComponent<Rigidbody2D>();
-            effect = GetComponent<IEffect>();
             input = GetComponent<IInputHandler>();
             enabled = false;
         }
@@ -30,11 +29,13 @@ namespace Script.Player.States
         public override bool Enter()
         {
             enabled = true;
+            OnEnter.Invoke();
             return true;
         }
 
         public override void Exit()
         {
+            OnExit.Invoke();
             enabled = false;
         }
     }  

@@ -22,9 +22,7 @@ namespace Script.Player.States
         public override bool Enter()
         {
             if (!input.ValidateInput()) return false;
-            effect.Play();
             rb.velocity = Vector2.up * jumpVelocity;
-            animator.SetBool("isJumping", true);
             return base.Enter();
         }
 
@@ -51,9 +49,7 @@ namespace Script.Player.States
         
         public override void Exit()
         {
-            animator.SetBool("isJumping", false);
             if (hitbox) Destroy(hitbox.gameObject);
-            effect.Stop();
             base.Exit();
         }
     }
