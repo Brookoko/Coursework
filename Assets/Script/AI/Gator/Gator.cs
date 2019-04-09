@@ -19,10 +19,12 @@ namespace Script.AI.Gator
         private float attackTimer;
         private bool wasInDeadZone;
         private float deadZoneTimer;
+        private Rigidbody2D rb;
         
         private void Awake()
         {
             attackTimer = timeBtwAttack;
+            rb = GetComponent<Rigidbody2D>();
         }
 
         private void Update()
@@ -58,7 +60,7 @@ namespace Script.AI.Gator
         {
             if (attackTimer > 0) return;
             attackTimer = timeBtwAttack;
-            var offset = transform.localRotation.y < 0 ? -1.5f : 1.5f;
+            var offset = transform.localScale.x < 0 ? -1.5f : 1.5f;
             Instantiate(fireball, transform.position + Vector3.right * offset, Quaternion.identity, transform);
         }
         
@@ -89,11 +91,11 @@ namespace Script.AI.Gator
         {
             var x = transform.position.x - player.position.x > 0 ? 1 : -1;
 
-            if (IsHitWall() && x * transform.forward.x * -1 > 0)
-                x = 0;
+            if (IsHitWall() && x * transform.localScale.x * -1 > 0) x = 0;
+
+            var target = transform.position + Vector3.right * x * deadZone * 10;
             
-            transform.position = Vector2.MoveTowards(transform.position,
-                transform.position + Vector3.right * x * deadZone * 10, Time.deltaTime * deadZone * 2);
+            rb.MovePosition(Vector2.MoveTowards(transform.position, target, Time.deltaTime * deadZone * 2));
         }
     }
 }

@@ -22,6 +22,7 @@ namespace Script.Player.States
             if (hitbox) Destroy(hitbox.gameObject);
             hitbox = Instantiate(attackHitBox, player.transform).transform;
             timer = dashTime;
+            ToggleHitbox();
             ChangeGravity();
             DashVelocity();
             return base.Enter();
@@ -36,6 +37,12 @@ namespace Script.Player.States
 
             timer -= Time.deltaTime;
             hitbox.position = player.transform.position;
+        }
+
+        private void ToggleHitbox()
+        {
+            HitBox.HitBox hit = GameObject.FindWithTag("Player").GetComponentInChildren<HitBox.HitBox>();
+            hit.enabled = !hit.enabled;
         }
         
         private void ChangeGravity()
@@ -62,6 +69,7 @@ namespace Script.Player.States
 
         public override void Exit()
         {
+            ToggleHitbox();
             ChangeGravity();
             if (hitbox) Destroy(hitbox.gameObject);
             base.Exit();

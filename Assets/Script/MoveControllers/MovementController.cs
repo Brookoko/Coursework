@@ -22,16 +22,15 @@ namespace Script.MoveControllers
             Vector3 targetVelocity = new Vector2(move * speed * 10f, rb.velocity.y);
             rb.velocity = Vector2.SmoothDamp(rb.velocity, targetVelocity, ref vel, movementSmoothing);
         
-            if (move > 0 && !facingRight)
-                Flip();
-            else if (move < 0 && facingRight)
-                Flip();
+            if (move > 0 && !facingRight || move < 0 && facingRight) Flip();
         }
     
         private void Flip()
         {
             facingRight = !facingRight;
-            transform.Rotate(0, 180, 0);
+            var scale = transform.localScale;
+            scale.x *= -1;
+            transform.localScale = scale;
         }
     }
 }

@@ -31,7 +31,7 @@ namespace Script.AI.Gator
             transform.position = thePos;
             timer += Time.deltaTime;
             if (timer >= lifeTime)
-                Destroy(gameObject);
+                OnCollide();
         }
         
         private void OnCollisionEnter2D(Collision2D other)

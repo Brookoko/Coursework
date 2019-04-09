@@ -18,8 +18,7 @@ namespace Script.MoveControllers
 
         public void Move(float move) {
             rb.AddForce(new Vector2(GetX() * move * 10f, GetY()), ForceMode2D.Impulse);
-            if (move > 0 && !facingRight || move < 0 && facingRight)
-                Flip();
+            if (move > 0 && !facingRight || move < 0 && facingRight) Flip();
         }
 
         private float GetX()
@@ -35,7 +34,9 @@ namespace Script.MoveControllers
         private void Flip()
         {
             facingRight = !facingRight;
-            transform.Rotate(0, 180f, 0);
+            var scale = transform.localScale;
+            scale.x *= -1;
+            transform.localScale = scale;
         }
     }
 }

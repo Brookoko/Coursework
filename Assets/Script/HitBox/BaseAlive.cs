@@ -8,15 +8,18 @@ namespace Script.HitBox
         [SerializeField] private float health = 5;
         [SerializeField] private float invulnerableTime = 0.5f;
         [SerializeField] private float toggleTime = 0.1f;
-        
+        [SerializeField] private GameObject deathEffect;
+      
         private float timer;
         private SpriteRenderer render;
         private Color color;
+        private Animator anim;
         
         private void Awake()
         {
             render = transform.parent.GetComponent<SpriteRenderer>();
             color = render.color;
+            anim = transform.parent.GetComponent<Animator>();
         }
 
         private void Update()
@@ -38,6 +41,7 @@ namespace Script.HitBox
 
         public virtual void OnDeath()
         {
+            Instantiate(deathEffect, transform.position, Quaternion.identity);
             Destroy(transform.parent.gameObject);
         }
 

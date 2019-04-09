@@ -23,7 +23,7 @@ namespace Script.AI
         public bool IsEntityVisible(Transform entity)
         {
             var pos = entity.position - transform.position;
-            var angle = Vector2.Angle(transform.forward, pos);
+            var angle = Vector2.Angle(Vector2.right * transform.localScale.x, pos);
             var visible = pos.sqrMagnitude < distanceOfView * distanceOfView && Mathf.Abs(angle) < fieldOfView;
 
             if (visible && direction == 0)
@@ -36,10 +36,7 @@ namespace Script.AI
 
         public void Reaction(Transform entity)
         {
-            int x = direction;
-            if (Mathf.Abs(entity.position.x - transform.position.x) < 0.1)
-                x = direction;                
-            enemy.Move(rageSpeedUp * Time.deltaTime * x);
+            enemy.Move(rageSpeedUp * Time.deltaTime * direction);
         }
     }
 }

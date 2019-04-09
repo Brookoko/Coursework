@@ -1,13 +1,11 @@
-using Script.Effects;
 using Script.StateMachineUtil;
-using Script.MoveControllers;
 using Script.Player.StateInput;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Script.Player.States
 {
-    public class BasePlayerState : BaseState
+    public class BasePlayerState : MonoBehaviour, IState
     {
         [SerializeField] private UnityEvent OnEnter;
         [SerializeField] private UnityEvent OnExit;
@@ -26,14 +24,16 @@ namespace Script.Player.States
             enabled = false;
         }
 
-        public override bool Enter()
+        public virtual string Name { get; } = "Base";
+
+        public virtual bool Enter()
         {
             enabled = true;
             OnEnter.Invoke();
             return true;
         }
 
-        public override void Exit()
+        public virtual void Exit()
         {
             OnExit.Invoke();
             enabled = false;

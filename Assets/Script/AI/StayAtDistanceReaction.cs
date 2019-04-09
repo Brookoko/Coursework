@@ -14,7 +14,13 @@ namespace Script.AI
         [Space]
 
         private float dist;
+        private Rigidbody2D rb;
         
+        private void Awake()
+        {
+            rb = GetComponent<Rigidbody2D>();
+        }
+
         public bool IsEntityVisible(Transform entity)
         {
             return DistanceToPlayer(entity) < distanceOfView * distanceOfView;
@@ -28,9 +34,9 @@ namespace Script.AI
         public void Reaction(Transform entity)
         {
             if (dist > stopDistance * stopDistance)
-                transform.position = Vector2.MoveTowards(transform.position, entity.position, speed * Time.deltaTime);
+                rb.MovePosition(Vector2.MoveTowards(transform.position, entity.position, speed * Time.deltaTime));
             else if (dist < retreatDistance * retreatDistance)
-                transform.position = Vector2.MoveTowards(transform.position, entity.position, -speed * Time.deltaTime);
+                rb.MovePosition(Vector2.MoveTowards(transform.position, entity.position, -speed * Time.deltaTime));
         }
     }
 }

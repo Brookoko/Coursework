@@ -25,14 +25,15 @@ namespace Script.MoveControllers
             float time = Time.time;
             Vector2 vel = new Vector2(Mathf.Cos(time) * horizontalSpeed, Mathf.Sin(time) * verticalSpeed) * radius / 10f;
             rb.velocity = Vector2.SmoothDamp(rb.velocity, vel, ref vec, movementSmoothing);
-            if (move < 0 && !facingRight || move > 0 && facingRight)
-                Flip();
+            if (move < 0 && !facingRight || move > 0 && facingRight) Flip();
         }
     
         private void Flip()
         {
             facingRight = !facingRight;
-            transform.Rotate(0, 180, 0);
+            var scale = transform.localScale;
+            scale.x *= -1;
+            transform.localScale = scale;
         }
     }
 }
