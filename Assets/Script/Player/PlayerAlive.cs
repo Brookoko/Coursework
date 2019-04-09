@@ -14,6 +14,7 @@ namespace Script.Player
         private Transform player;
         private Animator anim;
         private Rigidbody2D rb;
+        private Collider2D col;
         private float gravity;
         private StateMachine sm;
         
@@ -23,6 +24,7 @@ namespace Script.Player
             anim = player.GetComponent<Animator>();
             rb = player.GetComponent<Rigidbody2D>();
             sm = player.GetComponentInChildren<StateMachine>();
+            col = GetComponent<Collider2D>();
         }
 
         public override void GetDamage(float damage)
@@ -35,6 +37,7 @@ namespace Script.Player
         {
             Input.Disable();
             ToggleObjects();
+            ToggleHitbox();
             ResetAnimation();
             ChangeGravity();
             rb.velocity = Vector2.zero;
@@ -44,6 +47,7 @@ namespace Script.Player
             rb.AddForce(pushBackForce, ForceMode2D.Impulse);
             StartCoroutine(Blinking());
             ToggleObjects();
+            ToggleHitbox();
             yield return new WaitForSeconds(0.2f);
             Input.Enable();
         }
@@ -81,6 +85,11 @@ namespace Script.Player
             var g = rb.gravityScale;
             rb.gravityScale = gravity;
             gravity = g;
+        }
+
+        public void ToggleHitbox()
+        {
+            col.enabled = !col.enabled;
         }
     }
 }

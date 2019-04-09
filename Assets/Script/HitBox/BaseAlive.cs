@@ -13,13 +13,11 @@ namespace Script.HitBox
         private float timer;
         private SpriteRenderer render;
         private Color color;
-        private Animator anim;
         
         private void Awake()
         {
             render = transform.parent.GetComponent<SpriteRenderer>();
             color = render.color;
-            anim = transform.parent.GetComponent<Animator>();
         }
 
         private void Update()
