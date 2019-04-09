@@ -96,6 +96,8 @@ MonoBehaviour:
   health: 5
   invulnerableTime: 0.5
   toggleTime: 0.1
+  deathEffect: {fileID: 313236078969498947, guid: 2ea98908a50bbc96aa8e8dabeb03f83a,
+    type: 3}
 --- !u!114 &1424719602
 MonoBehaviour:
   m_ObjectHideFlags: 0

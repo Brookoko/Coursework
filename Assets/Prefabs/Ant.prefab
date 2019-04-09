@@ -272,7 +272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whatIsBarrier:
     serializedVersion: 2
-    m_Bits: 5943
+    m_Bits: 1
   wallChecker: {fileID: 8992140352969071793}
   distance: 1
 --- !u!114 &1853660615
@@ -289,7 +289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceOfView: 10
   fieldOfView: 10
-  rageSpeedUp: 2.5
+  rageSpeedUp: 2.7
 --- !u!1 &1497338115624478312
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,6 +386,8 @@ MonoBehaviour:
   health: 5
   invulnerableTime: 0.5
   toggleTime: 0.1
+  deathEffect: {fileID: 313236078969498947, guid: 2ea98908a50bbc96aa8e8dabeb03f83a,
+    type: 3}
 --- !u!114 &2102302652
 MonoBehaviour:
   m_ObjectHideFlags: 0

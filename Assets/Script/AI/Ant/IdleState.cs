@@ -21,8 +21,8 @@ namespace Script.AI.Ant
         {
             if (timer < 0) sm.ChangeState("Move");
             else timer -= Time.deltaTime;
-            entity.Move(0);
-            if (entity.IsEntityVisible()) sm.ChangeState("Rage");
+            enemy.Move(0);
+            if (enemy.IsEntityVisible()) sm.ChangeState("Rage");
         }
     }
 }

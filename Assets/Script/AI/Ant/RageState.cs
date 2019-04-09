@@ -4,7 +4,7 @@ namespace Script.AI.Ant
 {
     public class RageState : BaseEntityState
     {
-        [SerializeField] private float rageTime;
+        [SerializeField] private float rageTime = 0.2f;
         
         private float timer;
 
@@ -19,9 +19,10 @@ namespace Script.AI.Ant
 
         private void Update()
         {
-            if (entity.IsEntityVisible()) entity.Reaction();
-            if (!entity.IsEntityVisible() && timer < 0 || entity.IsHitWall()) sm.ResetStates();
-            timer -= Time.deltaTime;
+            if (enemy.IsEntityVisible()) enemy.Reaction();
+            else timer -= Time.deltaTime;
+            if (timer < 0) sm.ResetStates();
+            if (enemy.IsHitWall()) sm.ChangeState("Idle");
         }
 
         public override void Exit()
