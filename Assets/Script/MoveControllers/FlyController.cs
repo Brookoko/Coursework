@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Script.MoveControllers
 {
     public class FlyController : MonoBehaviour, IMoveController {
         [Range(0, .3f)] [SerializeField] private float movementSmoothing = .05f;
-        public float horizontalSpeed;
-        public float verticalSpeed;
-        public float radius;
+        [SerializeField] private float horizontalSpeed;
+        [SerializeField] private float verticalSpeed;
+        [SerializeField] private float radius;
         
         private bool facingRight = true;
         private Vector2 vec = Vector2.zero;
