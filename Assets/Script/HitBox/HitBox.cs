@@ -23,7 +23,7 @@ namespace Script.HitBox
             if (status.IsVulnerable())
                 status.GetDamage(entityHitBox.Attack(transform.parent.gameObject));
             if (!status.IsAlive())
-                status.OnDeath();
+                status.Death();
         }
 
         private float Attack(GameObject entity)

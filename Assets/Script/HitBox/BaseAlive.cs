@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Script.HitBox
 {
@@ -7,61 +8,37 @@ namespace Script.HitBox
     {
         [SerializeField] private float health = 5;
         [SerializeField] private float invulnerableTime = 0.5f;
-        [SerializeField] private float toggleTime = 0.1f;
-        [SerializeField] private GameObject deathEffect;
-      
-        private float timer;
-        private SpriteRenderer render;
-        private Color color;
+        [SerializeField] private UnityEvent OnDamage;
+        [SerializeField] private UnityEvent OnDeath;
         
-        private void Awake()
-        {
-            render = transform.parent.GetComponent<SpriteRenderer>();
-            color = render.color;
-        }
-
+        private float timer;
+        
         private void Update()
         {
             timer -= Time.deltaTime;
         }
         
-        public virtual void GetDamage(float damage)
+        public void GetDamage(float damage)
         {
+            OnDamage.Invoke();
             health -= damage;
             timer = invulnerableTime;
-            StartCoroutine(Blinking());
         }
 
-        public virtual bool IsAlive()
+        public bool IsAlive()
         {
             return health > 0;
         }
 
-        public virtual void OnDeath()
+        public void Death()
         {
-            Instantiate(deathEffect, transform.position, Quaternion.identity);
+            OnDeath.Invoke();
             Destroy(transform.parent.gameObject);
         }
 
-        public virtual bool IsVulnerable()
+        public bool IsVulnerable()
         {
-            return !(timer > 0);
-        }
-        
-        protected IEnumerator Blinking()
-        {
-            while (timer > 0)
-            {
-                ReverseAlpha();
-                yield return new WaitForSeconds(toggleTime);
-            }
-            render.color = new Color(color.r, color.g, color.b, 1);
-        }
-
-        private void ReverseAlpha()
-        {
-            render.color = new Color(color.r, color.g, color.b, color.a < 1 ? 1 : 0.3f);
-            color = render.color;
+            return timer < 0;
         }
     }
 }

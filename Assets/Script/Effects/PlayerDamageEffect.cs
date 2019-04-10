@@ -1,13 +1,12 @@
 using System.Collections;
-using Script.HitBox;
 using Script.StateMachineUtil;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Input = Script.Player.StateInput.Input;
 
-namespace Script.Player
+namespace Script.Effects
 {
-    public class PlayerAlive : BaseAlive
+    public class PlayerDamageEffect : MonoBehaviour, IEffect
     {
         [SerializeField] private Vector2 pushBackForce = new Vector2(12, 4);
         
@@ -17,8 +16,9 @@ namespace Script.Player
         private Collider2D col;
         private float gravity;
         private StateMachine sm;
-        
-        private void Start()
+        private Coroutine cor;
+
+        private void Awake()
         {
             player = transform.parent;
             anim = player.GetComponent<Animator>();
@@ -27,11 +27,12 @@ namespace Script.Player
             col = GetComponent<Collider2D>();
         }
 
-        public override void GetDamage(float damage)
+        public void Play()
         {
-            base.GetDamage(damage);
             StartCoroutine(OnDamage());
         }
+
+        public void Stop() {}
 
         private IEnumerator OnDamage()
         {
@@ -45,7 +46,6 @@ namespace Script.Player
             yield return new WaitForSeconds(0.5f);
             ChangeGravity();
             rb.AddForce(pushBackForce, ForceMode2D.Impulse);
-            StartCoroutine(Blinking());
             ToggleObjects();
             ToggleHitbox();
             yield return new WaitForSeconds(0.2f);
@@ -58,9 +58,8 @@ namespace Script.Player
             {
                 Rigidbody2D rbObj = obj.GetComponent<Rigidbody2D>();
                 Animator animObj = obj.GetComponent<Animator>();
-                if (!rbObj || !animObj) continue;
-                animObj.enabled = !animObj.enabled;
-                rbObj.simulated = !rbObj.simulated;
+                if (rbObj) rbObj.simulated = !rbObj.simulated;
+                if (animObj) animObj.enabled = !animObj.enabled;
             }
         }
 

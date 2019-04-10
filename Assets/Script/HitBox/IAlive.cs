@@ -6,7 +6,7 @@ namespace Script.HitBox
     {
         void GetDamage(float damage);
         bool IsAlive();
-        void OnDeath();
+        void Death();
         bool IsVulnerable();
     }
 }

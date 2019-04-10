@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3680685828584040618}
   - component: {fileID: 5494016936950119866}
   - component: {fileID: 4324056079607416970}
-  - component: {fileID: 6696604757057428456}
+  - component: {fileID: 3186092878076008954}
   m_Layer: 0
   m_Name: Death
   m_TagString: Untagged
@@ -100,7 +100,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6696604757057428456
+--- !u!114 &3186092878076008954
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,6 +109,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 313236078969498947}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd83f9d0a83c40c2bd614fb0e0836d1c, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f08f591d3b946908aabac99a0175bd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathParticle: {fileID: 0}

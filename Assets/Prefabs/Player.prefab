@@ -62,7 +62,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5193469312231101389}
+      - m_Target: {fileID: 0}
         m_MethodName: ToggleHitbox
         m_Mode: 1
         m_Arguments:
@@ -100,7 +100,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5193469312231101389}
+      - m_Target: {fileID: 0}
         m_MethodName: ToggleHitbox
         m_Mode: 1
         m_Arguments:
@@ -9846,7 +9846,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5193469312231101389}
+      - m_Target: {fileID: 0}
         m_MethodName: ToggleHitbox
         m_Mode: 1
         m_Arguments:
@@ -9873,7 +9873,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5193469312231101389}
+      - m_Target: {fileID: 0}
         m_MethodName: ToggleHitbox
         m_Mode: 1
         m_Arguments:
@@ -10351,7 +10351,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5193469312231101389}
+      - m_Target: {fileID: 0}
         m_MethodName: ToggleHitbox
         m_Mode: 1
         m_Arguments:
@@ -10378,7 +10378,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5193469312231101389}
+      - m_Target: {fileID: 0}
         m_MethodName: ToggleHitbox
         m_Mode: 1
         m_Arguments:
@@ -19969,7 +19969,9 @@ GameObject:
   - component: {fileID: 7016613257615585696}
   - component: {fileID: 6529469595581215944}
   - component: {fileID: 6037058731992929090}
-  - component: {fileID: 5193469312231101389}
+  - component: {fileID: 3351615040431783634}
+  - component: {fileID: 7963327745712357589}
+  - component: {fileID: 5545330117189354811}
   m_Layer: 12
   m_Name: HitBox
   m_TagString: PlayerHitBox
@@ -20046,7 +20048,7 @@ MonoBehaviour:
   vulnerableTo:
   - EnemyHitBox
   - Projectile
---- !u!114 &5193469312231101389
+--- !u!114 &3351615040431783634
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20055,12 +20057,79 @@ MonoBehaviour:
   m_GameObject: {fileID: 5893133026055591450}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f4bbe60a9e7462dbe3749ee7a004359, type: 3}
+  m_Script: {fileID: 11500000, guid: f73abfb09ce84f749335386913f5f882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
-  invulnerableTime: 3.5
-  toggleTime: 0.2
-  deathEffect: {fileID: 313236078969498947, guid: 2ea98908a50bbc96aa8e8dabeb03f83a,
-    type: 3}
+  health: 5
+  invulnerableTime: 1
+  OnDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5545330117189354811}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5545330117189354811}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3186092878076008954, guid: 2ea98908a50bbc96aa8e8dabeb03f83a,
+          type: 3}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &7963327745712357589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5893133026055591450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4906a87afdb41b88e4146cec5eec68d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   pushBackForce: {x: 12, y: 4}
+--- !u!114 &5545330117189354811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5893133026055591450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8ef4613d5c24baca593fa7266bc5c3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toggleTime: 0.15
+  blinkingTime: 1
