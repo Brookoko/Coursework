@@ -50,7 +50,7 @@ namespace Script.Player.States
             var x = Input.GetAxisRaw("Horizontal");
             var y = Input.GetAxisRaw("Vertical");
             Flip(x);
-            if (Mathf.Abs(x) < 0.01 && Mathf.Abs(y) < 0.01) x = player.transform.localRotation.y < 0 ? -1 : 1;
+            if (Mathf.Abs(x) < 0.01 && Mathf.Abs(y) < 0.01) x = player.transform.localScale.x;
             rb.AddForce(new Vector2(x, y).normalized * dashVelocity, ForceMode2D.Impulse);
         }
         
