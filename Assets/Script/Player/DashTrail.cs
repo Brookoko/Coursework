@@ -21,10 +21,8 @@ namespace Script.Player
 
         void Update()
         {
-            if (timer <= 0)
-                Destroy(gameObject);
-            else 
-                timer -= Time.deltaTime;
+            if (timer <= 0) Destroy(gameObject);
+            else  timer -= Time.deltaTime;
 
             color.a = timer / lifeTime * initialAlpha;
             render.color = color;

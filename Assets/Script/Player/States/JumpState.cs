@@ -15,13 +15,15 @@ namespace Script.Player.States
         [SerializeField] private GameObject attackHitBox;
         
         private float movement;
-        private Transform hitbox;
+        private GameObject hitbox;
         
         public override string Name { get; } = "Jump";
 
         public override bool Enter()
         {
             if (!input.ValidateInput()) return false;
+            if (hitbox) Destroy(hitbox);
+            hitbox = Instantiate(attackHitBox, player.transform);
             rb.velocity = Vector2.up * jumpVelocity;
             return base.Enter();
         }
@@ -32,13 +34,10 @@ namespace Script.Player.States
                 movement = Input.GetAxisRaw("Horizontal");
 
             if (rb.velocity.y < 0)
-            {
-                if (!hitbox) hitbox = Instantiate(attackHitBox, player.transform).transform;
-                hitbox.position = player.transform.position;
                 rb.velocity += Vector2.up * Physics2D.gravity.y * (gravityScale - 1) * Time.deltaTime;
-            } else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
+            else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
                 rb.velocity += Vector2.up * Physics2D.gravity.y * (lowScale - 1) * Time.deltaTime;
-            
+
             input.Handle();
         }
         
@@ -49,7 +48,7 @@ namespace Script.Player.States
         
         public override void Exit()
         {
-            if (hitbox) Destroy(hitbox.gameObject);
+            if (hitbox) Destroy(hitbox);
             base.Exit();
         }
     }

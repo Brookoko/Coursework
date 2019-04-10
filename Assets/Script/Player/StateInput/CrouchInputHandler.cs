@@ -15,7 +15,8 @@ namespace Script.Player.StateInput
         {
             if (Input.GetButtonDown("Dash"))
                 sm.ChangeState("Dash");
-            if (!(player.IsHitCeil() || Input.GetButton("Crouch"))) sm.ChangeState("Idle");
+            if (!(player.IsHitCeil() || Input.GetButton("Crouch")))
+                sm.ChangeState("Idle");
         }
     }
 }

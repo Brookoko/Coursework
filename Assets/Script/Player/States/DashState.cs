@@ -10,7 +10,7 @@ namespace Script.Player.States
         [SerializeField] private GameObject attackHitBox;
 
         private float timer;
-        private Transform hitbox;
+        private GameObject hitbox;
         private float gravity;
         
         public override string Name { get; } = "Dash";
@@ -18,8 +18,8 @@ namespace Script.Player.States
         public override bool Enter()
         {
             if (!input.ValidateInput()) return false;
-            if (hitbox) Destroy(hitbox.gameObject);
-            hitbox = Instantiate(attackHitBox, player.transform).transform;
+            if (hitbox) Destroy(hitbox);
+            hitbox = Instantiate(attackHitBox, player.transform);
             timer = dashTime;
             ChangeGravity();
             DashVelocity();
@@ -28,13 +28,10 @@ namespace Script.Player.States
 
         private void Update()
         {
-            if (timer < -0.2f)
-                sm.ChangeState("Fall");
-            else if (timer < 0)
-                rb.velocity = Vector2.zero;
+            if (timer < -0.2f) sm.ChangeState("Fall");
+            else if (timer < 0) rb.velocity = Vector2.zero;
 
             timer -= Time.deltaTime;
-            hitbox.position = player.transform.position;
         }
         
         private void ChangeGravity()
@@ -49,8 +46,8 @@ namespace Script.Player.States
             rb.velocity = Vector2.zero;
             var x = Input.GetAxisRaw("Horizontal");
             var y = Input.GetAxisRaw("Vertical");
-            Flip(x);
             if (Mathf.Abs(x) < 0.01 && Mathf.Abs(y) < 0.01) x = player.transform.localScale.x;
+            Flip(x);
             rb.AddForce(new Vector2(x, y).normalized * dashVelocity, ForceMode2D.Impulse);
         }
         
@@ -62,7 +59,7 @@ namespace Script.Player.States
         public override void Exit()
         {
             ChangeGravity();
-            if (hitbox) Destroy(hitbox.gameObject);
+            if (hitbox) Destroy(hitbox);
             base.Exit();
         }
     }
