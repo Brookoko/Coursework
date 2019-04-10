@@ -7,8 +7,8 @@ namespace Script.Scene
 {
     public class LevelExit : MonoBehaviour
     {
-        public int SceneIndexToLoad;
-        public SceneTransition manager;
+        [SerializeField] private int SceneIndexToLoad;
+        [SerializeField] private SceneTransition manager;
 
         private void OnTriggerEnter2D(Collider2D other)
         {

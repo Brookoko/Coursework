@@ -62,7 +62,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7963327745712357589}
         m_MethodName: ToggleHitbox
         m_Mode: 1
         m_Arguments:
@@ -100,7 +100,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7963327745712357589}
         m_MethodName: ToggleHitbox
         m_Mode: 1
         m_Arguments:
@@ -9846,7 +9846,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7963327745712357589}
         m_MethodName: ToggleHitbox
         m_Mode: 1
         m_Arguments:
@@ -9873,7 +9873,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7963327745712357589}
         m_MethodName: ToggleHitbox
         m_Mode: 1
         m_Arguments:
@@ -10351,7 +10351,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7963327745712357589}
         m_MethodName: ToggleHitbox
         m_Mode: 1
         m_Arguments:
@@ -10378,7 +10378,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7963327745712357589}
         m_MethodName: ToggleHitbox
         m_Mode: 1
         m_Arguments:
@@ -20060,8 +20060,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f73abfb09ce84f749335386913f5f882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
-  invulnerableTime: 1
+  health: 10
+  invulnerableTime: 1.5
   OnDamage:
     m_PersistentCalls:
       m_Calls:
@@ -20076,7 +20076,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5545330117189354811}
+      - m_Target: {fileID: 7963327745712357589}
         m_MethodName: Play
         m_Mode: 1
         m_Arguments:
@@ -20131,5 +20131,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ef4613d5c24baca593fa7266bc5c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toggleTime: 0.15
-  blinkingTime: 1
+  toggleTime: 0.1
+  blinkingTime: 1.5

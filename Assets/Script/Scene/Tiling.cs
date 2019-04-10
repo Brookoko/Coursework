@@ -5,11 +5,11 @@ namespace Script.Scene
     [RequireComponent(typeof(SpriteRenderer))]
     public class Tiling : MonoBehaviour
     {
-        public int offsetX = 2;
-        public Transform rightBody;
-        public Transform leftBody;
-        public bool reverseScale;
-
+        [SerializeField] private float offsetX = 2;
+        [SerializeField] private bool reverseScale;
+        
+        private Transform rightBody;
+        private Transform leftBody;
         private float width;
         private Camera cam;
 
@@ -31,14 +31,10 @@ namespace Script.Scene
             float edgeLeft = transform.position.x - width / 2 + camWidth;
 
             var posX = cam.transform.position.x;
-            if (posX >= edgeRight - offsetX && !rightBody)
-                rightBody = AddNewBody(1);
-            else if (posX >= edgeRight + width * 2)
-                Destroy();
-            else if (posX < edgeLeft + offsetX && !leftBody)
-                leftBody = AddNewBody(-1);
-            else if (posX <= edgeLeft - width * 2)
-                Destroy();
+            if (posX >= edgeRight - offsetX && !rightBody) rightBody = AddNewBody(1);
+            else if (posX >= edgeRight + width * 2) Destroy();
+            else if (posX < edgeLeft + offsetX && !leftBody) leftBody = AddNewBody(-1);
+            else if (posX <= edgeLeft - width * 2) Destroy();
         }
 
         private Transform AddNewBody(int side)
@@ -49,20 +45,19 @@ namespace Script.Scene
             body.parent = transform.parent;
 
             var tile = body.GetComponent<Tiling>();
-            if (side == 1)
-                tile.leftBody = transform;
-            else
-                tile.rightBody = transform;
+            if (side == 1) tile.leftBody = transform;
+            else tile.rightBody = transform;
         
-            if (reverseScale)
-            {
-                var scale = body.lossyScale;
-                scale.x *= -1;
-                body.localScale = scale;
-            }
-
+            if (reverseScale) Flip(body);
             
             return body;
+        }
+
+        private void Flip(Transform body)
+        {
+            var scale = body.lossyScale;
+            scale.x *= -1;
+            body.localScale = scale;
         }
 
         private void Destroy()

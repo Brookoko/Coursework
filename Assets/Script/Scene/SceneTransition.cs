@@ -33,8 +33,7 @@ namespace Script.Scene
             Input.Enable();
             player = GameObject.FindWithTag("Player");
             GameObject enter = GameObject.FindWithTag("EnterPoint");
-            if (player && enter)
-                player.transform.position = enter.transform.position;
+            if (player && enter) player.transform.position = enter.transform.position;
         }
     }
 }

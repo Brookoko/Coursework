@@ -18,7 +18,6 @@ namespace Script.Scene
         private void Start()
         {
             prevCamPos = cam.position;
-            
             scale = transform.position.z * -1;
         }
 
