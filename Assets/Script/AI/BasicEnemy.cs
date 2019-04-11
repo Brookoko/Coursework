@@ -5,7 +5,7 @@ namespace Script.AI
 {
     [RequireComponent(typeof(IEntityReaction), typeof(IMoveController))]
     public class BasicEnemy : MonoBehaviour , IEnemy
-    {     
+    {
         protected Transform player;
         private IEntityReaction behaviourOnEntity;
         private IMoveController controller;

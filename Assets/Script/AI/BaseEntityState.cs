@@ -9,13 +9,15 @@ namespace Script.AI
         protected IEnemy enemy;
         protected StateMachine sm;
         protected Animator anim;
-        
+        protected Rigidbody2D rb;
+   
         private void Awake()
         {
             entity = transform.parent.parent;
             enemy = entity.GetComponent<IEnemy>();
             sm = entity.GetComponentInChildren<StateMachine>();
             anim = entity.GetComponent<Animator>();
+            rb = entity.GetComponent<Rigidbody2D>();
             enabled = false;
         }
 

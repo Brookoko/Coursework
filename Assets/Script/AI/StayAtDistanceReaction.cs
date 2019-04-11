@@ -11,14 +11,23 @@ namespace Script.AI
         [SerializeField] private float stopDistance;
         [SerializeField] private float retreatDistance;
         [SerializeField] private float speed;
-        [Space]
 
         private float dist;
         private Rigidbody2D rb;
+        private Transform tran;
         
         private void Awake()
         {
-            rb = GetComponent<Rigidbody2D>();
+            if (transform.CompareTag("Enemy"))
+            {
+                tran = transform;
+                rb = GetComponent<Rigidbody2D>();
+            }
+            else
+            {
+                tran = transform.parent;
+                rb = tran.GetComponent<Rigidbody2D>();
+            }
         }
 
         public bool IsEntityVisible(Transform entity)
@@ -28,15 +37,15 @@ namespace Script.AI
         
         private float DistanceToPlayer(Transform entity)
         {
-            return dist = (transform.position - entity.position).sqrMagnitude;
+            return dist = (tran.position - entity.position).sqrMagnitude;
         }
 
         public void Reaction(Transform entity)
         {
             if (dist > stopDistance * stopDistance)
-                rb.MovePosition(Vector2.MoveTowards(transform.position, entity.position, speed * Time.deltaTime));
+                rb.MovePosition(Vector2.MoveTowards(tran.position, entity.position, speed * Time.deltaTime));
             else if (dist < retreatDistance * retreatDistance)
-                rb.MovePosition(Vector2.MoveTowards(transform.position, entity.position, -speed * Time.deltaTime));
+                rb.MovePosition(Vector2.MoveTowards(tran.position, entity.position, -speed * Time.deltaTime));
         }
     }
 }
