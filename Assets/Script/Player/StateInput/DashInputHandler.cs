@@ -5,11 +5,9 @@ namespace Script.Player.StateInput
     public class DashInputHandler : BaseInputHandler
     {
         [SerializeField] private int dashNumber = 1;
-        [SerializeField] private float timeBtwDash = 3f;
         
         private int currentDashNumber;
         private Player player;
-        private float timer;
 
         private void Start()
         {
@@ -19,15 +17,7 @@ namespace Script.Player.StateInput
 
         public override bool ValidateInput()
         {
-            var valid = currentDashNumber-- > 0 && timer < 0;
-            if (valid) timer = timeBtwDash;
-            return valid;
-        }
-
-        private void Update()
-        {
-            timer -= Time.deltaTime;
-            if (timer < 0) ResetDash();
+            return currentDashNumber-- > 0;
         }
 
         public override void Handle()

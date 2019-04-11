@@ -12,18 +12,14 @@ namespace Script.Player.States
         [SerializeField] private float gravityScale = 2.5f;
         [SerializeField] private float lowScale = 2f;
         [SerializeField] private bool airControl;
-        [SerializeField] private GameObject attackHitBox;
         
         private float movement;
-        private GameObject hitbox;
         
         public override string Name { get; } = "Jump";
 
         public override bool Enter()
         {
             if (!input.ValidateInput()) return false;
-            if (hitbox) Destroy(hitbox);
-            hitbox = Instantiate(attackHitBox, player.transform);
             rb.velocity = Vector2.up * jumpVelocity;
             return base.Enter();
         }
@@ -44,12 +40,6 @@ namespace Script.Player.States
         private void FixedUpdate()
         {
             player.Move(movement * Time.fixedDeltaTime);
-        }
-        
-        public override void Exit()
-        {
-            if (hitbox) Destroy(hitbox);
-            base.Exit();
         }
     }
 }
