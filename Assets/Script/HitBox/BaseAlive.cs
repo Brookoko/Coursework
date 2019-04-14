@@ -12,7 +12,13 @@ namespace Script.HitBox
         [SerializeField] private UnityEvent OnDeath;
         
         private float timer;
+        private Collider2D col;
         
+        private void Awake()
+        {
+            col = GetComponent<Collider2D>();
+        }
+
         private void Update()
         {
             timer -= Time.deltaTime;
@@ -22,7 +28,7 @@ namespace Script.HitBox
         {
             OnDamage.Invoke();
             health -= damage;
-            timer = invulnerableTime;
+            StartCoroutine(Invulnerability(invulnerableTime));
         }
 
         public bool IsAlive()
@@ -39,6 +45,19 @@ namespace Script.HitBox
         public bool IsVulnerable()
         {
             return timer < 0;
+        }
+
+        public void SetInvulnerability(float time)
+        {
+            StartCoroutine(Invulnerability(time));
+        }
+
+        private IEnumerator Invulnerability(float time)
+        {
+            timer = time;
+            col.enabled = false;
+            yield return new WaitForSeconds(time);
+            col.enabled = true;
         }
     }
 }

@@ -21,7 +21,8 @@ namespace Script.Effects
             player = GameObject.FindWithTag("Player").transform;
             particle = GetComponent<ParticleSystem>();
             trail = GetComponent<TrailRenderer>();
-            animator = GameObject.FindWithTag("Player").GetComponent<Animator>();
+            trail.enabled = false;
+            animator = player.GetComponent<Animator>();
         }
 
         public void Play()

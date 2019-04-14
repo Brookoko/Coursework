@@ -2,8 +2,12 @@ using UnityEngine;
 
 namespace Script.Effects
 {
-    public class CrouchEffect : MonoBehaviour, IEffect
+    public class SetAnimationEffect : MonoBehaviour, IEffect
     {
+        [SerializeField] private string parameter;
+        [SerializeField] private bool on;
+        [SerializeField] private bool off;
+        
         private Animator animator;
 
         private void Awake()
@@ -13,12 +17,12 @@ namespace Script.Effects
 
         public void Play()
         {
-            animator.SetBool("isCrouching", true);
+            animator.SetBool(parameter, on);
         }
 
         public void Stop()
         {
-            animator.SetBool("isCrouching", false);
+            animator.SetBool(parameter, off);
         }
     }
 }

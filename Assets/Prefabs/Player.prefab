@@ -73,6 +73,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3351615040431783634}
+        m_MethodName: SetInvulnerability
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1.2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   OnExit:
@@ -4915,7 +4926,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashNumber: 1
-  timeBtwDash: 3
 --- !u!1 &1938237887
 GameObject:
   m_ObjectHideFlags: 0
@@ -9797,7 +9807,7 @@ GameObject:
   - component: {fileID: 6586166833916863466}
   - component: {fileID: 7796475721365712884}
   - component: {fileID: 491415807}
-  - component: {fileID: 491415808}
+  - component: {fileID: 588842136}
   m_Layer: 10
   m_Name: FallState
   m_TagString: Untagged
@@ -9835,19 +9845,8 @@ MonoBehaviour:
   OnEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 491415808}
+      - m_Target: {fileID: 588842136}
         m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7963327745712357589}
-        m_MethodName: ToggleHitbox
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9862,19 +9861,8 @@ MonoBehaviour:
   OnExit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 491415808}
+      - m_Target: {fileID: 588842136}
         m_MethodName: Stop
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7963327745712357589}
-        m_MethodName: ToggleHitbox
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9899,7 +9887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55e3807f85434c22b92d7f459d6edebb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &491415808
+--- !u!114 &588842136
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9908,9 +9896,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1917672960010663132}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86e5ea97ffd442b7b931e0422bf6d2eb, type: 3}
+  m_Script: {fileID: 11500000, guid: 849934a441b74cb0b8168ed0e9d838a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parameter: isFalling
+  on: 1
+  off: 0
 --- !u!1 &4135869473442106216
 GameObject:
   m_ObjectHideFlags: 0
@@ -9981,8 +9972,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4135869474448183013}
   - component: {fileID: 4135869474448183014}
-  - component: {fileID: 936018876}
   - component: {fileID: 1649513065}
+  - component: {fileID: 1503815357}
   m_Layer: 10
   m_Name: CrouchState
   m_TagString: Untagged
@@ -10019,7 +10010,7 @@ MonoBehaviour:
   OnEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 936018876}
+      - m_Target: {fileID: 1503815357}
         m_MethodName: Play
         m_Mode: 1
         m_Arguments:
@@ -10035,7 +10026,7 @@ MonoBehaviour:
   OnExit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 936018876}
+      - m_Target: {fileID: 1503815357}
         m_MethodName: Stop
         m_Mode: 1
         m_Arguments:
@@ -10050,18 +10041,6 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   crouchSpeed: 0.4
   colliderToDisable: {fileID: 8718846522167122441}
---- !u!114 &936018876
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4135869474448183012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e748e7e4f6548979015cca2eacc1357, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1649513065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10074,6 +10053,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c59fa2554c574ebf84b2b015a6460b39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1503815357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4135869474448183012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 849934a441b74cb0b8168ed0e9d838a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parameter: isCrouching
+  on: 1
+  off: 0
 --- !u!1 &4135869474968541774
 GameObject:
   m_ObjectHideFlags: 0
@@ -10113,6 +10107,7 @@ Transform:
   - {fileID: 4135869473442106217}
   - {fileID: 4135869473453050559}
   - {fileID: 3930447127903836097}
+  - {fileID: 3680685830295381178}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10351,17 +10346,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7963327745712357589}
-        m_MethodName: ToggleHitbox
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   OnExit:
@@ -10378,25 +10362,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7963327745712357589}
-        m_MethodName: ToggleHitbox
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   jumpVelocity: 20
   gravityScale: 2.5
   lowScale: 2
   airControl: 1
-  attackHitBox: {fileID: 1533217547107846318, guid: b041d50221ca197c8a33f68317a2bed8,
-    type: 3}
 --- !u!198 &2068153105
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -20133,3 +20104,78 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toggleTime: 0.1
   blinkingTime: 1.5
+--- !u!1001 &2046888976
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4135869474968541761}
+    m_Modifications:
+    - target: {fileID: 313236078969498947, guid: 2ea98908a50bbc96aa8e8dabeb03f83a,
+        type: 3}
+      propertyPath: m_Name
+      value: Death
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680685828584040618, guid: 2ea98908a50bbc96aa8e8dabeb03f83a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680685828584040618, guid: 2ea98908a50bbc96aa8e8dabeb03f83a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680685828584040618, guid: 2ea98908a50bbc96aa8e8dabeb03f83a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680685828584040618, guid: 2ea98908a50bbc96aa8e8dabeb03f83a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680685828584040618, guid: 2ea98908a50bbc96aa8e8dabeb03f83a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680685828584040618, guid: 2ea98908a50bbc96aa8e8dabeb03f83a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680685828584040618, guid: 2ea98908a50bbc96aa8e8dabeb03f83a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680685828584040618, guid: 2ea98908a50bbc96aa8e8dabeb03f83a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680685828584040618, guid: 2ea98908a50bbc96aa8e8dabeb03f83a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680685828584040618, guid: 2ea98908a50bbc96aa8e8dabeb03f83a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680685828584040618, guid: 2ea98908a50bbc96aa8e8dabeb03f83a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2ea98908a50bbc96aa8e8dabeb03f83a, type: 3}
+--- !u!4 &3680685830295381178 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3680685828584040618, guid: 2ea98908a50bbc96aa8e8dabeb03f83a,
+    type: 3}
+  m_PrefabInstance: {fileID: 2046888976}
+  m_PrefabAsset: {fileID: 0}

@@ -10,7 +10,6 @@ namespace Script.Effects
         
         private SpriteRenderer render;
         private Color color;
-        private Coroutine cor;
         private float timer;
         
         private void Awake()
@@ -23,7 +22,7 @@ namespace Script.Effects
         public void Play()
         {
             timer = blinkingTime;
-            cor = StartCoroutine(Blinking());
+            StartCoroutine(Blinking());
         }
 
         public void Stop()
