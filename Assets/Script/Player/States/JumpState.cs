@@ -12,6 +12,7 @@ namespace Script.Player.States
         [SerializeField] private float gravityScale = 2.5f;
         [SerializeField] private float lowScale = 2f;
         [SerializeField] private bool airControl;
+        [SerializeField] private GameObject attack;
         
         private float movement;
         
@@ -20,6 +21,7 @@ namespace Script.Player.States
         public override bool Enter()
         {
             if (!input.ValidateInput()) return false;
+            Instantiate(attack, player.transform);
             rb.velocity = Vector2.up * jumpVelocity;
             return base.Enter();
         }

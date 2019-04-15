@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3680685828584040618}
   - component: {fileID: 5494016936950119866}
   - component: {fileID: 4324056079607416970}
-  - component: {fileID: 4448565906103479759}
+  - component: {fileID: 3284235449729654085}
   m_Layer: 0
   m_Name: Death
   m_TagString: Untagged
@@ -100,7 +100,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4448565906103479759
+--- !u!114 &3284235449729654085
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

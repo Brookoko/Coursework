@@ -26,6 +26,7 @@ namespace Script.HitBox
         
         public void GetDamage(float damage)
         {
+            if (damage <= 0) return;
             OnDamage.Invoke();
             health -= damage;
             StartCoroutine(Invulnerability(invulnerableTime));

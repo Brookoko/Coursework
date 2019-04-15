@@ -10,7 +10,6 @@ namespace Script.Player.States
         [SerializeField] private GameObject attackHitBox;
 
         private float timer;
-        private GameObject hitbox;
         private float gravity;
         
         public override string Name { get; } = "Dash";
@@ -18,8 +17,7 @@ namespace Script.Player.States
         public override bool Enter()
         {
             if (!input.ValidateInput()) return false;
-            if (hitbox) Destroy(hitbox);
-            hitbox = Instantiate(attackHitBox, player.transform);
+            Instantiate(attackHitBox, player.transform);
             timer = dashTime;
             ChangeGravity();
             DashVelocity();
@@ -59,7 +57,6 @@ namespace Script.Player.States
         public override void Exit()
         {
             ChangeGravity();
-            if (hitbox) Destroy(hitbox);
             base.Exit();
         }
     }

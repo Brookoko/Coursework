@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 788517363199306186}
   - component: {fileID: 3854513608771219672}
   - component: {fileID: 7206580592103446772}
+  - component: {fileID: 317372754996614953}
   m_Layer: 14
   m_Name: PlayerAttackHitbox
   m_TagString: PlayerAttackHitBox
@@ -62,8 +63,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vulnerableTo: []
-  status: {fileID: 0}
-  attack: {fileID: 7206580592103446772}
 --- !u!114 &7206580592103446772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,3 +77,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   bounceForce: 15
+--- !u!114 &317372754996614953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533217547107846318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68770ea75f74ae58a002e8a3faa3942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

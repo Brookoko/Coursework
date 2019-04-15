@@ -1,6 +1,6 @@
 namespace Script.Player.StateInput
 {
-    public class Input
+    public static class Input
     {
         private static bool enable = true;
         
