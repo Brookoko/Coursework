@@ -14,7 +14,7 @@ namespace Script.Scene
         {
             if (other.CompareTag("Player"))
             {
-                manager.Transite(SceneIndexToLoad);
+                SceneTransition.Load(SceneIndexToLoad);
             }
         }
     }   
