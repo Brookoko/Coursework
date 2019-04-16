@@ -122,6 +122,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 317372754996614953, guid: b041d50221ca197c8a33f68317a2bed8,
+          type: 3}
+        m_MethodName: Destroy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   dashVelocity: 30
@@ -9872,10 +9884,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8602779761897915802, guid: 54f927ee4e1ab0363b28f4e00a12c37f,
+          type: 3}
+        m_MethodName: Destroy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   airControl: 1
-  attack: {fileID: 0}
+  attack: {fileID: 7368921945664903709, guid: 54f927ee4e1ab0363b28f4e00a12c37f, type: 3}
 --- !u!114 &491415807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10282,7 +10306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundCheck: {fileID: 4135869473453050559}
   ceilingCheck: {fileID: 4135869473442106217}
-  radius: 0.2
+  radius: 0.25
   whatIsGround:
     serializedVersion: 2
     m_Bits: 1
@@ -10363,13 +10387,25 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8602779761897915802, guid: 54f927ee4e1ab0363b28f4e00a12c37f,
+          type: 3}
+        m_MethodName: Destroy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   jumpVelocity: 20
   gravityScale: 2.5
   lowScale: 2
   airControl: 1
-  attack: {fileID: 0}
+  attack: {fileID: 7368921945664903709, guid: 54f927ee4e1ab0363b28f4e00a12c37f, type: 3}
 --- !u!198 &2068153105
 ParticleSystem:
   m_ObjectHideFlags: 0
