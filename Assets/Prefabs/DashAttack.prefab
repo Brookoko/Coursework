@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1533217547107846318
+--- !u!1 &8975859142442394220
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,25 +8,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1533217547107846319}
-  - component: {fileID: 788517363199306186}
-  - component: {fileID: 3854513608771219672}
-  - component: {fileID: 7206580592103446772}
-  - component: {fileID: 317372754996614953}
+  - component: {fileID: 1666864580948912357}
+  - component: {fileID: 4433849034265713707}
+  - component: {fileID: 1981624677973328496}
+  - component: {fileID: 5474355097618642937}
+  - component: {fileID: 320280890714045950}
   m_Layer: 14
-  m_Name: PlayerAttackHitbox
+  m_Name: DashAttack
   m_TagString: PlayerAttackHitBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1533217547107846319
+--- !u!4 &1666864580948912357
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1533217547107846318}
+  m_GameObject: {fileID: 8975859142442394220}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -34,13 +34,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &788517363199306186
+--- !u!58 &4433849034265713707
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1533217547107846318}
+  m_GameObject: {fileID: 8975859142442394220}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -50,42 +50,42 @@ CircleCollider2D:
   m_Offset: {x: -0.2, y: -0.5}
   serializedVersion: 2
   m_Radius: 1.2
---- !u!114 &3854513608771219672
+--- !u!114 &1981624677973328496
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1533217547107846318}
+  m_GameObject: {fileID: 8975859142442394220}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d5e57539dc548909fc0034bfb87b535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   vulnerableTo: []
---- !u!114 &7206580592103446772
+--- !u!114 &5474355097618642937
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1533217547107846318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64cf1d47d53e402991bbbee2bc37880a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
-  bounceForce: 15
---- !u!114 &317372754996614953
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1533217547107846318}
+  m_GameObject: {fileID: 8975859142442394220}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d68770ea75f74ae58a002e8a3faa3942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &320280890714045950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8975859142442394220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ece94d5d193946a8b5bf7e8de73da1ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  pushBackForce: {x: 30, y: 0}

@@ -6,8 +6,11 @@ namespace Script
     {
         public void Destroy()
         {
-            GameObject obj = GameObject.FindGameObjectWithTag(gameObject.tag);
-            Destroy(obj);
+            GameObject[] objs = GameObject.FindGameObjectsWithTag(gameObject.tag);
+            foreach (var obj in objs)
+            {
+                Destroy(obj);
+            }
         }
     }
 }

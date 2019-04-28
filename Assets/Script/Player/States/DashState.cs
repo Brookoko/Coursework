@@ -57,6 +57,7 @@ namespace Script.Player.States
         public override void Exit()
         {
             ChangeGravity();
+            rb.velocity = Vector2.zero;
             base.Exit();
         }
     }
