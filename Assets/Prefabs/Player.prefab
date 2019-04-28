@@ -62,17 +62,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7963327745712357589}
-        m_MethodName: ToggleHitbox
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 3351615040431783634}
         m_MethodName: SetInvulnerability
         m_Mode: 4
@@ -80,7 +69,7 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 1.2
+          m_FloatArgument: 1
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -111,18 +100,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7963327745712357589}
-        m_MethodName: ToggleHitbox
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 317372754996614953, guid: b041d50221ca197c8a33f68317a2bed8,
+      - m_Target: {fileID: 5474355097618642937, guid: cd1bbab04962d19f8932731b60bb343b,
           type: 3}
         m_MethodName: Destroy
         m_Mode: 1
@@ -138,7 +116,7 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   dashVelocity: 30
   dashTime: 0.2
-  attackHitBox: {fileID: 1533217547107846318, guid: b041d50221ca197c8a33f68317a2bed8,
+  attackHitBox: {fileID: 8975859142442394220, guid: cd1bbab04962d19f8932731b60bb343b,
     type: 3}
 --- !u!198 &1866372128
 ParticleSystem:
@@ -5161,7 +5139,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.9716981, g: 0.85656726, b: 0.7975258, a: 0.5882353}
+      maxColor: {r: 0.5647059, g: 0.49411765, b: 0.44705883, a: 0.39215687}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9884,7 +9862,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8602779761897915802, guid: 54f927ee4e1ab0363b28f4e00a12c37f,
+      - m_Target: {fileID: 317372754996614953, guid: b041d50221ca197c8a33f68317a2bed8,
           type: 3}
         m_MethodName: Destroy
         m_Mode: 1
@@ -9899,7 +9877,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   airControl: 1
-  attack: {fileID: 7368921945664903709, guid: 54f927ee4e1ab0363b28f4e00a12c37f, type: 3}
+  attack: {fileID: 1533217547107846318, guid: b041d50221ca197c8a33f68317a2bed8, type: 3}
 --- !u!114 &491415807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9981,7 +9959,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4135869473453050558}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.05, z: 0}
+  m_LocalPosition: {x: -0.1, y: -1.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4135869474968541761}
@@ -10387,7 +10365,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8602779761897915802, guid: 54f927ee4e1ab0363b28f4e00a12c37f,
+      - m_Target: {fileID: 317372754996614953, guid: b041d50221ca197c8a33f68317a2bed8,
           type: 3}
         m_MethodName: Destroy
         m_Mode: 1
@@ -10405,7 +10383,7 @@ MonoBehaviour:
   gravityScale: 2.5
   lowScale: 2
   airControl: 1
-  attack: {fileID: 7368921945664903709, guid: 54f927ee4e1ab0363b28f4e00a12c37f, type: 3}
+  attack: {fileID: 1533217547107846318, guid: b041d50221ca197c8a33f68317a2bed8, type: 3}
 --- !u!198 &2068153105
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -10596,7 +10574,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.9716981, g: 0.85656726, b: 0.7975258, a: 0.5882353}
+      maxColor: {r: 0.5647059, g: 0.49411765, b: 0.44705883, a: 0.39215687}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -15428,7 +15406,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.9716981, g: 0.85656726, b: 0.7975258, a: 0.5882353}
+      maxColor: {r: 0.5647059, g: 0.49411765, b: 0.44705883, a: 0.39215687}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -19975,7 +19953,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3930447127903836097}
-  - component: {fileID: 7016613257615585696}
   - component: {fileID: 6529469595581215944}
   - component: {fileID: 6037058731992929090}
   - component: {fileID: 3351615040431783634}
@@ -20002,20 +19979,6 @@ Transform:
   m_Father: {fileID: 4135869474968541761}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7016613257615585696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5893133026055591450}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d5e57539dc548909fc0034bfb87b535, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vulnerableTo:
-  - EnemyHitBox
 --- !u!61 &6529469595581215944
 BoxCollider2D:
   m_ObjectHideFlags: 0
