@@ -6,7 +6,8 @@ namespace Script.Effects
 {
     public class FadingEffect : MonoBehaviour, IEffect
     {
-        [SerializeField] private UnityEvent OnEnd;
+        [SerializeField] private UnityEvent OnFadeOutEnd;
+        [SerializeField] private UnityEvent OnFadeOutIn;
         
         private Animator anim;
 
@@ -21,10 +22,15 @@ namespace Script.Effects
             anim.SetTrigger("Fade");
         }
 
+        public void OnFadeInEnd()
+        {
+            OnFadeOutIn.Invoke();
+        }
+
         public void Stop()
         {
             anim.ResetTrigger("Fade");
-            OnEnd.Invoke();
+            OnFadeOutEnd.Invoke();
         }
     }
 }

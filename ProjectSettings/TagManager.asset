@@ -11,7 +11,9 @@ TagManager:
   - EnterPoint
   - PlayerAttackHitBox
   - Projectile
+  - GameUI
   - PauseMenu
+  - Menu
   layers:
   - Default
   - TransparentFX
