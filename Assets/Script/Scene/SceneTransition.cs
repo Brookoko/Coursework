@@ -7,14 +7,14 @@ namespace Script.Scene
 {
     public class SceneTransition : MonoBehaviour
     {
-        private static IEffect transiteEffect;
-        private static int levelIndex;
-        private static GameObject player;
+        private IEffect transitionEffect;
+        private int levelIndex;
+        private GameObject player;
 
-        private void Awake()
+        private void Start()
         {
             player = GameObject.FindWithTag("Player");
-            transiteEffect = GetComponent<IEffect>();
+            transitionEffect = GetComponent<IEffect>();
         }
 
         private void OnEnable()
@@ -22,10 +22,10 @@ namespace Script.Scene
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
-        public static void Load(int index)
+        public void Load(int index)
         {
             levelIndex = index;
-            transiteEffect.Play();
+            transitionEffect.Play();
         }
 
         public void OnComplete()
