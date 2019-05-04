@@ -6,10 +6,8 @@ namespace Script.Scene
     [ExecuteInEditMode] [SaveDuringPlay] [AddComponentMenu("")] // Hide in menu
     public class CinemachineLockAxis : CinemachineExtension
     {
-        [Tooltip("Lock the camera's Z position to this value")]
-        public float m_YPosition = 10;
- 
- 
+        public float upper = 10;
+        public float lower;
  
         protected override void PostPipelineStageCallback(
             CinemachineVirtualCameraBase vcam,
@@ -17,10 +15,16 @@ namespace Script.Scene
         {
             if (enabled && stage == CinemachineCore.Stage.Body)
             {
-                var pos = state.RawPosition;
-                pos.y = m_YPosition;
-                state.RawPosition = pos;
+                if (state.RawPosition.y > upper) SetPosition(ref state, upper);
+                if (state.RawPosition.y < lower) SetPosition(ref state, lower);
             }
+        }
+
+        private void SetPosition(ref CameraState state, float y)
+        {
+            var pos = state.RawPosition;
+            pos.y = y;
+            state.RawPosition = pos;
         }
     }    
 }
