@@ -1,7 +1,5 @@
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
-using Input = Script.Player.StateInput.Input;
 
 namespace Script.Player
 {
@@ -18,7 +16,6 @@ namespace Script.Player
         private void Awake()
         {
             player = GameObject.FindGameObjectWithTag("Player").transform;
-            SceneManager.sceneLoaded += OnSceneLoaded;
         }
         
         public void OnFadeEnd()
@@ -30,6 +27,8 @@ namespace Script.Player
 
         private void Update()
         {
+            if  (!cam) cam = Camera.main;
+            if (enter.Equals(Vector3.zero)) enter = player.transform.position;
             var posY = cam.transform.position.y - cam.orthographicSize - offset;
             if (player.transform.position.y <= posY && invokeAvailable)
             {
@@ -38,9 +37,9 @@ namespace Script.Player
             }
         }
         
-        private void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, LoadSceneMode mode)
+        public void SetUpEnterPoint(GameObject enter)
         {
-            enter = GameObject.FindWithTag("EnterPoint").transform.position;
+            this.enter = enter.transform.position;
             cam = Camera.main;
         }
     }

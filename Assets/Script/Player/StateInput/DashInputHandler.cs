@@ -30,5 +30,9 @@ namespace Script.Player.StateInput
             currentDashNumber = dashNumber;
         }
 
+        public void SetDashNumber(int dash)
+        {
+            dashNumber = dash;
+        }
     }
 }

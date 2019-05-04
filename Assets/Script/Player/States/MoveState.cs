@@ -1,5 +1,4 @@
-﻿using Script.Player.StateInput;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Script.Player.States
 {
@@ -11,7 +10,7 @@ namespace Script.Player.States
 
         private void Update()
         {        
-            movement = StateInput.Input.GetAxisRaw("Horizontal");
+            movement = Input.GetAxisRaw("Horizontal");
             input.Handle();
         }
 

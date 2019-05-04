@@ -1,6 +1,4 @@
-using Script.Player.StateInput;
 using UnityEngine;
-using Input = Script.Player.StateInput.Input;
 
 namespace Script.Player.States
 {
