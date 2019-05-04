@@ -69,7 +69,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _GridSize: 10
+    - _GridSize: 5
     - _Metallic: 0
     - _Mitigation: 9.1
     - _Mode: 0
@@ -85,10 +85,10 @@ Material:
     - _StencilOp: 0
     - _StencilReadMask: 255
     - _StencilWriteMask: 255
-    - _Time: 1
+    - _Time: 0
     - _UVSec: 0
     - _UseUIAlphaClip: 0
-    - _X: 80
+    - _X: 40
     - _Y: 0
     - _ZWrite: 1
     m_Colors:
