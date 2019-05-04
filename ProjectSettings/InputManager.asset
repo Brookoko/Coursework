@@ -121,8 +121,8 @@ InputManager:
     m_Name: Dash
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: c
-    positiveButton: left shift
+    negativeButton: 
+    positiveButton: c
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -137,7 +137,7 @@ InputManager:
     m_Name: Pause
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: p
+    negativeButton: escape
     positiveButton: 
     altNegativeButton: 
     altPositiveButton: 
