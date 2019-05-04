@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.Events;
-using Input = Script.Player.StateInput.Input;
 
 namespace Script.Menu
 {
@@ -31,6 +30,11 @@ namespace Script.Menu
         public void SetTime(float time)
         {
             timer = time;
+        }
+
+        public void setButton(string btn)
+        {
+            skipButton = btn;
         }
     }
 }

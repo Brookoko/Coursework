@@ -1,6 +1,7 @@
+using System.Collections;
+using System.Timers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Input = Script.Player.StateInput.Input;
 
 namespace Script.Menu
 {
@@ -12,34 +13,27 @@ namespace Script.Menu
         {
             if (UnityEngine.Input.GetButtonDown("Pause"))
             {
-                if (paused) Restore(transform.GetChild(0).gameObject);
-                else Pause(transform.GetChild(0).gameObject);
+                AffectScene(transform.GetChild(0).gameObject);
             }
         }
         
-        private static void Pause(GameObject pauseMenu)
+        public void AffectScene(GameObject pauseMenu)
         {
-            paused = true;
-            Time.timeScale = 0;
-            Time.fixedDeltaTime = 0;
-            Input.Disable();
-            pauseMenu.SetActive(true);
+            StartCoroutine(AffectSceneDelay(pauseMenu));
+        }
+
+        private IEnumerator AffectSceneDelay(GameObject pauseMenu)
+        {
+            yield return null;
+            paused = !paused;
+            ToggleTime();
+            ToggleInput();
+            pauseMenu.SetActive(paused);
             ToggleObjectsInScene(SceneManager.GetActiveScene());
             ToggleObjectsInScene(pauseMenu.scene);
         }
 
-        private static void Restore(GameObject pauseMenu)
-        {
-            paused = false;
-            Time.timeScale = 1;
-            Time.fixedDeltaTime = Time.fixedUnscaledDeltaTime;
-            Input.Enable();
-            pauseMenu.SetActive(false);
-            ToggleObjectsInScene(SceneManager.GetActiveScene());
-            ToggleObjectsInScene(pauseMenu.scene);
-        }
-
-        private static void ToggleObjectsInScene(UnityEngine.SceneManagement.Scene scene)
+        private void ToggleObjectsInScene(UnityEngine.SceneManagement.Scene scene)
         {
             foreach (GameObject obj in scene.GetRootGameObjects())
             {
@@ -48,6 +42,26 @@ namespace Script.Menu
                 if (anim) anim.enabled = !anim.enabled;
                 if (rb) rb.simulated = !rb.simulated;
             }
+        }
+
+        public void ToggleTime()
+        {
+            if (Time.timeScale < 0.01)
+            {
+                Time.timeScale = 1;
+                Time.fixedDeltaTime = Time.fixedUnscaledDeltaTime;
+            }
+            else
+            {
+                Time.timeScale = 0;
+                Time.fixedDeltaTime = 0;
+            }
+        }
+
+        private void ToggleInput()
+        {
+            if (paused) Input.Disable();
+            else Input.Enable();
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Script.Menu
         private PopUpImage current;
         private int index = 1;
 
-        private void Start()
+        private void Awake()
         {
             current = dialogue[0];
             skip = GetComponent<Skippable>();
@@ -42,7 +42,12 @@ namespace Script.Menu
                 SetAlpha(image.color.a  + current.displaySpeed);
                 yield return null;
             }
-            skip.SetTime(current.timeOnScreen);
+
+            if (current.skippable)
+            {
+                skip.SetTime(current.timeOnScreen);
+                skip.setButton(current.skipButton);                
+            }
         }
 
         private void SetAlpha(float alpha)
@@ -55,6 +60,7 @@ namespace Script.Menu
         public void Fade()
         {
             skip.SetTime(float.PositiveInfinity);
+            skip.setButton("");
             StopAllCoroutines();
             if (current.fadeMode == 0) StartCoroutine(Fading());
         }

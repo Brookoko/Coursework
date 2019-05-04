@@ -15,7 +15,7 @@ namespace Script.Menu
         private PopUp current;
         private int index = 1;
 
-        private void Start()
+        private void Awake()
         {
             current = dialogue[0];
             skip = GetComponent<Skippable>();
@@ -23,21 +23,28 @@ namespace Script.Menu
 
         public void Display()
         {
+            SetAlpha(1);
             textDisplay.text = "";
+            textDisplay.font = current.font;
             if (current.displayMode == 0) StartCoroutine(DisplayFading());
             else if (current.displayMode == 1) StartCoroutine(DisplayLetterByLetter());
         }
 
         private IEnumerator DisplayFading()
         {
-            textDisplay.text = current.text;
             SetAlpha(0);
+            textDisplay.text = current.text;
             while (textDisplay.color.a < 1)
             {
                 SetAlpha(textDisplay.color.a  + current.displaySpeed);
                 yield return null;
             }
-            skip.SetTime(current.timeOnScreen);
+
+            if (current.skippable)
+            {
+                skip.setButton(current.skipButton);
+                skip.SetTime(current.timeOnScreen);
+            }
         }
 
         private void SetAlpha(float alpha)
@@ -59,12 +66,17 @@ namespace Script.Menu
                 textDisplay.text += current.text[i];
                 yield return new WaitForSeconds(current.displaySpeed);
             }
-            skip.SetTime(current.timeOnScreen);
+            if (current.skippable)
+            {
+                skip.setButton(current.skipButton);
+                skip.SetTime(current.timeOnScreen);
+            }
         }
 
         public void Fade()
         {
             skip.SetTime(float.PositiveInfinity);
+            skip.setButton("");
             StopAllCoroutines();
             if (current.fadeMode == 0) StartCoroutine(Fading());
             else if (current.fadeMode == 1) StartCoroutine(FadeLetterByLetter());
@@ -79,6 +91,7 @@ namespace Script.Menu
             }
             current = index < dialogue.Length ? dialogue[index++] : null;
             if (current) Display();
+            else OnEnd.Invoke();
         }
         
         private IEnumerator FadeLetterByLetter()
