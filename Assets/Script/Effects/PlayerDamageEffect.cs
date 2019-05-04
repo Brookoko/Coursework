@@ -2,7 +2,6 @@ using System.Collections;
 using Script.StateMachineUtil;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Input = Script.Player.StateInput.Input;
 
 namespace Script.Effects
 {

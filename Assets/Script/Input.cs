@@ -40,27 +40,19 @@ namespace Script
             {"M", "m"}
         };
         
-        private static Dictionary<string, string> axis = new Dictionary<string, string>();
+        private static Dictionary<string, string> axis = new Dictionary<string, string>
+        {
+            {"Jump", "space"},
+            {"Dash", "c"},
+            {"Crouch", "left ctrl"}
+        };
         
         private static Dictionary<string, bool> tableOfAvailability = new Dictionary<string, bool>();
         
         private static bool enable = true;
         
-        public static void SetButton(string axisName, string value)
-        {
-            value = convert.ContainsKey(value) ? convert[value] : convert.ContainsValue(value) ? value : string.Empty;
-            if (string.IsNullOrEmpty(value) || !axis.ContainsKey(axisName)) return;
-            axis[axisName] = value;
-        }
-
-        public static string GetValue(string axisName)
-        {
-            return axis.ContainsKey(axisName) ? axis[axisName] : "";
-        }
-        
         public static float GetAxisRaw(string axes)
         {
-            axes = axis.ContainsKey(axes) ? axis[axes] : axes;
             if (!tableOfAvailability.ContainsKey(axes)) SetAvailability(axes, true);
             if (!enable || !tableOfAvailability[axes]) return 0;
             return UnityEngine.Input.GetAxisRaw(axes);
@@ -68,23 +60,51 @@ namespace Script
 
         public static bool GetButton(string button)
         {
-            button = axis.ContainsKey(button) ? axis[button] : button;
+            bool value;
+            if (axis.ContainsKey(button))
+            {
+                button = axis[button];
+                value = UnityEngine.Input.GetKey(button);
+            }
+            else
+            {
+                value = UnityEngine.Input.GetButton(button);
+            }
             if (!tableOfAvailability.ContainsKey(button)) SetAvailability(button, true);
-            return enable && tableOfAvailability[button] && UnityEngine.Input.GetButton(button);
+            return enable && tableOfAvailability[button] && value;
         }
         
         public static bool GetButtonDown(string button)
         {
-            button = axis.ContainsKey(button) ? axis[button] : button;
+            bool value;
+            if (axis.ContainsKey(button))
+            {
+                button = axis[button];
+                value = UnityEngine.Input.GetKeyDown(button);
+            }
+            else
+            {
+                value = UnityEngine.Input.GetButtonDown(button);
+            }
             if (!tableOfAvailability.ContainsKey(button)) SetAvailability(button, true);
-            return enable && tableOfAvailability[button] && UnityEngine.Input.GetButtonDown(button);
+            return enable && tableOfAvailability[button] && value;
         }
         
         public static bool GetButtonUp(string button)
         {
+            bool value;
+            if (axis.ContainsKey(button))
+            {
+                button = axis[button];
+                value = UnityEngine.Input.GetKeyUp(button);
+            }
+            else
+            {
+                value = UnityEngine.Input.GetButtonUp(button);
+            }
             button = axis.ContainsKey(button) ? axis[button] : button;
             if (!tableOfAvailability.ContainsKey(button)) SetAvailability(button, true);
-            return enable && tableOfAvailability[button] && UnityEngine.Input.GetButtonUp(button);
+            return enable && tableOfAvailability[button] && value;
         }
 
         public static void Enable()
@@ -97,6 +117,18 @@ namespace Script
             enable = false;
         }
 
+        public static void SetButton(string axisName, string value)
+        {
+            value = convert.ContainsKey(value) ? convert[value] : convert.ContainsValue(value) ? value : string.Empty;
+            if (string.IsNullOrEmpty(value) || !axis.ContainsKey(axisName)) return;
+            axis[axisName] = value;
+        }
+
+        public static string GetValue(string axisName)
+        {
+            return axis.ContainsKey(axisName) ? axis[axisName] : "";
+        }
+        
         public static void SetAvailability(string input, bool available)
         {
             if (tableOfAvailability.ContainsKey(input))

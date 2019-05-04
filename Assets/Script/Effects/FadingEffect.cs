@@ -1,12 +1,11 @@
 using UnityEngine;
 using UnityEngine.Events;
-using Input = Script.Player.StateInput.Input;
 
 namespace Script.Effects
 {
     public class FadingEffect : MonoBehaviour, IEffect
     {
-        [SerializeField] private UnityEvent OnFadeOutEnd;
+        public UnityEvent OnFadeOutEnd;
         [SerializeField] private UnityEvent OnFadeOutIn;
         
         private Animator anim;
