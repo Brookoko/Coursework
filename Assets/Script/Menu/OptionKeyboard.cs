@@ -11,6 +11,7 @@ namespace Script.Menu
         public string axis;
         [SerializeField] private Color highlightedColor;
         
+        private InputConverter convert = new InputConverter();
         private TextMeshProUGUI text;
         private TextMeshProUGUI sibling;
         private Color defaultColor;
@@ -47,7 +48,7 @@ namespace Script.Menu
             if (e.isKey && e.type == EventType.KeyDown)
             {
                 string value = e.keyCode.ToString();
-                string code = Input.ConvertToCode(value);
+                string code = convert.ConvertToCode(value);
                 string btn = avoid.Find(x => Input.GetValue(x).Equals(code));
                 if (string.IsNullOrEmpty(btn)) StartCoroutine(SetButton(code));
                 sibling.color = defaultValueColor;

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Script.Effects;
 using Script.Player;
 using Script.SaveLoad;
@@ -11,12 +12,11 @@ namespace Script.Scene
     {
         private static readonly Dictionary<int, int> enters = new Dictionary<int, int>();
         private static string transition;
-        private static LevelData data;
+        private static Data[] data;
        
         private IEffect transitionEffect;
         private int levelIndex;
         private GameObject player;
-        private bool firstEnter;
 
         private void Start()
         {
@@ -33,8 +33,8 @@ namespace Script.Scene
 
         public void OnComplete()
         {
-            SaveLoadLevel.Save(SceneManager.GetActiveScene());
-            data = SaveLoadLevel.Load(NameFromIndex(levelIndex));
+            SaveLoadProgress.Load();
+            data = SaveLoadProgress.LoadData();
             SceneManager.LoadScene(levelIndex);
         }
 
@@ -51,21 +51,12 @@ namespace Script.Scene
             {
                 foreach (GameObject obj in scene.GetRootGameObjects())
                 {
-                    PositData pos = data.GetPositData(obj.name);
-                    if (pos == null)
-                        Destroy(obj);
-                    else
-                        pos.Restore(obj);
+                    Data pos = Array.Find(data, el => el.id.Equals(obj.name));
+                    if (pos != null) obj.transform.position = new Vector3(pos.position[0], pos.position[1], pos.position[2]);
                 }
-                enters[levelIndex] = data.timeEnter + 1;
             }
-            else
-            {
-                if (enters.ContainsKey(levelIndex))
-                    enters[levelIndex]++;
-                else
-                    enters.Add(levelIndex, 0);
-            }
+            if (enters.ContainsKey(levelIndex)) enters[levelIndex]++;
+            else enters.Add(levelIndex, 0);
         }
 
         private void SetScene(UnityEngine.SceneManagement.Scene scene)
@@ -75,14 +66,11 @@ namespace Script.Scene
             if (player && enter)
             {
                 player.transform.position = enter.transform.position;
-
                 GameObject.Find("FallOutController")?
                     .GetComponent<FallOutController>().SetUpEnterPoint(enter);
-
                 LevelEnter level = enter.GetComponent<LevelEnter>();
                 level.SetUpScene();
-                if (firstEnter) level.OnFirstLoad.Invoke();
-                firstEnter = false;
+                if (TimeEnter(levelIndex) == 0) level.OnFirstLoad.Invoke();
             }
         }
         

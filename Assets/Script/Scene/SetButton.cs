@@ -6,12 +6,16 @@ namespace Script.Scene
     {
         public void Enable(string button)
         {
-            Input.SetAvailability(button, true);
+            string axis = Input.GetValue(button);
+            button = string.IsNullOrEmpty(axis) ? button : axis; 
+            if (!string.IsNullOrEmpty(button)) Input.SetAvailability(button, true);
         }
         
         public void Disable(string button)
         {
-            Input.SetAvailability(button, false);
+            string axis = Input.GetValue(button);
+            button = string.IsNullOrEmpty(axis) ? button : axis; 
+            if (!string.IsNullOrEmpty(button)) Input.SetAvailability(button, false);
         }
     }
 }

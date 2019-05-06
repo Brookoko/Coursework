@@ -4,13 +4,13 @@ namespace Script.SaveLoad
 {
     public class SaveLoadSetting : MonoBehaviour
     {
+        private InputConverter convert = new InputConverter();
+        
         private void Start()
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-            Input.SetButton("Jump", Input.ConvertToCode(PlayerPrefs.GetInt("Jump", -1)));
-            Input.SetButton("Dash", Input.ConvertToCode(PlayerPrefs.GetInt("Dash", -1)));
-            Input.SetButton("Crouch", Input.ConvertToCode(PlayerPrefs.GetInt("Crouch", -1)));
+            Input.SetButton("Jump", convert.ConvertToCode(PlayerPrefs.GetInt("Jump", -1)));
+            Input.SetButton("Dash", convert.ConvertToCode(PlayerPrefs.GetInt("Dash", -1)));
+            Input.SetButton("Crouch", convert.ConvertToCode(PlayerPrefs.GetInt("Crouch", -1)));
             AudioManager.SetVolume("Volume", PlayerPrefs.GetInt("Volume", 10));
             AudioManager.SetVolume("Music", PlayerPrefs.GetInt("Music", 10));
             AudioManager.SetVolume("Effect", PlayerPrefs.GetInt("Effect", 10));
@@ -28,9 +28,9 @@ namespace Script.SaveLoad
 
         private void OnApplicationQuit()
         {
-            PlayerPrefs.SetInt("Jump", Input.ConvertToInt(Input.GetValue("Jump")));
-            PlayerPrefs.SetInt("Dash", Input.ConvertToInt(Input.GetValue("Dash")));
-            PlayerPrefs.SetInt("Crouch", Input.ConvertToInt(Input.GetValue("Crouch")));
+            PlayerPrefs.SetInt("Jump", convert.ConvertToInt(Input.GetValue("Jump")));
+            PlayerPrefs.SetInt("Dash", convert.ConvertToInt(Input.GetValue("Dash")));
+            PlayerPrefs.SetInt("Crouch", convert.ConvertToInt(Input.GetValue("Crouch")));
             PlayerPrefs.SetInt("Volume", AudioManager.GetVolume("Volume"));
             PlayerPrefs.SetInt("Music", AudioManager.GetVolume("Music"));
             PlayerPrefs.SetInt("Effect", AudioManager.GetVolume("Effect"));

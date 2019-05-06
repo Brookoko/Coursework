@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Script.Player
+namespace Script.Scene
 {
     public class FallOutController : MonoBehaviour
     {
@@ -18,7 +18,7 @@ namespace Script.Player
             player = GameObject.FindGameObjectWithTag("Player").transform;
         }
         
-        public void OnFadeEnd()
+        public void OnFadeOutEnd()
         {
             player.transform.position = enter;
             invokeAvailable = true;

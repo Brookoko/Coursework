@@ -1,44 +1,27 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Script.SaveLoad;
 using UnityEngine;
 
 namespace Script
 {
     public static class Input
     {
-        private static Dictionary<string, string> convert = new Dictionary<string, string>
+        private static InputConverter convert = new InputConverter();
+        
+        static Input()
         {
-            {"RightShift", "right shift"},
-            {"LeftShift", "left shift"},
-            {"RightControl", "right ctrl"},
-            {"LeftControl", "left ctrl"},
-            {"RightAlt", "right alt"},
-            {"LeftAlt", "left alt"},
-            {"Space", "space"},
-            {"Q", "q"},
-            {"E", "e"},
-            {"R", "r"},
-            {"T", "t"},
-            {"Y", "y"},
-            {"U", "u"},
-            {"I", "i"},
-            {"O", "o"},
-            {"P", "p"},
-            {"F", "f"},
-            {"G", "g"},
-            {"H", "h"},
-            {"J", "j"},
-            {"K", "k"},
-            {"L", "l"},
-            {"Z", "z"},
-            {"X", "x"},
-            {"C", "c"},
-            {"V", "v"},
-            {"B", "b"},
-            {"N", "n"},
-            {"M", "m"}
-        };
+            SaveLoadProgress.Load();
+            Table table = SaveLoadProgress.LoadTable();
+            if (table != null)
+            {
+                for (int i = 0; i < table.input.Length; i++)
+                {
+                    tableOfAvailability.Add(table.input[i], table.available[i]);
+                }
+            }
+        }
         
         private static Dictionary<string, string> axis = new Dictionary<string, string>
         {
@@ -47,7 +30,7 @@ namespace Script
             {"Crouch", "left ctrl"}
         };
         
-        private static Dictionary<string, bool> tableOfAvailability = new Dictionary<string, bool>();
+        public static Dictionary<string, bool> tableOfAvailability = new Dictionary<string, bool>();
         
         private static bool enable = true;
         
@@ -119,7 +102,7 @@ namespace Script
 
         public static void SetButton(string axisName, string value)
         {
-            value = convert.ContainsKey(value) ? convert[value] : convert.ContainsValue(value) ? value : string.Empty;
+            value = convert.GetValue(value);
             if (string.IsNullOrEmpty(value) || !axis.ContainsKey(axisName)) return;
             axis[axisName] = value;
         }
@@ -135,23 +118,6 @@ namespace Script
                 tableOfAvailability[input] = available;
             else
                 tableOfAvailability.Add(input, available);
-        }
-        
-        public static int ConvertToInt(string code)
-        {
-            string s = convert.FirstOrDefault(x => x.Value.Equals(code)).Key;
-            if (Enum.TryParse<KeyCode>(s, out var c)) return (int) c;
-            return -1;
-        }
-
-        public static string ConvertToCode(int value)
-        {
-            return ConvertToCode(((KeyCode) value).ToString());
-        }
-
-        public static string ConvertToCode(string value)
-        {
-            return convert.ContainsKey(value) ? convert[value] : "";
         }
     }
 }
