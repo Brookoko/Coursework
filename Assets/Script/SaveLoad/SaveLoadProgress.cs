@@ -20,10 +20,12 @@ namespace Script.SaveLoad
             Load();
             if (progress == null) progress = new Progress();
             progress.table.Fill(Input.tableOfAvailability);
-            progress.data = ConcatArray(progress.data, LoadScene());
+            Data[] sceneData = LoadScene();
+            progress.data = ConcatArray(progress.data, sceneData);
             progress.level = level;
             progress.pos = pos;
             SaveGame.Serializer = new SaveGameBinarySerializer();
+            SaveGame.Encode = true;
             SaveGame.Save("data", progress);
         }
 
@@ -50,6 +52,19 @@ namespace Script.SaveLoad
             List<Data> list = new List<Data>();
             Savable data = obj.GetComponent<Savable>();
             if (data) list.Add(data.Init());
+            int index = Array.FindIndex(progress.data, el => el.id.Equals(obj.name));
+            if (index != -1)
+            {
+                if (index == progress.data.Length - 1)
+                {
+                    Array.Resize(ref progress.data, progress.data.Length - 1);
+                }
+                else
+                {
+                    Array.Copy(progress.data, index + 1, progress.data, index, progress.data.Length - index - 1);
+                    Array.Resize(ref progress.data, progress.data.Length - 1);
+                }
+            }
             foreach (Transform child in obj.transform)
             {
                 LoadFromTo(LoadObjectData(child.gameObject), list);
@@ -83,6 +98,7 @@ namespace Script.SaveLoad
             if (progress == null)
             {
                 SaveGame.Serializer = new SaveGameBinarySerializer();
+                SaveGame.Encode = true;
                 progress = SaveGame.Load<Progress>("data");
             }
             OnLoad.Invoke(progress.level);
