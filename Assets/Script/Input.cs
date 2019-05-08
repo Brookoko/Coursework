@@ -104,6 +104,13 @@ namespace Script
         {
             value = convert.GetValue(value);
             if (string.IsNullOrEmpty(value) || !axis.ContainsKey(axisName)) return;
+            if (tableOfAvailability.ContainsKey(axis[axisName]))
+            {
+                if (tableOfAvailability.ContainsKey(value))
+                    tableOfAvailability[value] = tableOfAvailability[axis[axisName]];
+                else
+                    tableOfAvailability.Add(value, tableOfAvailability[axis[axisName]]);
+            }
             axis[axisName] = value;
         }
 
