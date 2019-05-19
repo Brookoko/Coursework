@@ -4,9 +4,9 @@ namespace Script.HitBox
 {
     public class Attack : MonoBehaviour, IAttack
     {
-        [SerializeField] private float damage = 1;
+        [SerializeField] private int damage = 1;
 
-        public virtual float Damage(GameObject target)
+        public virtual int Damage(GameObject target)
         {
             return damage;
         }

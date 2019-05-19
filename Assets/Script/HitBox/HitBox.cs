@@ -1,5 +1,7 @@
 using System.Linq;
+using Script.SaveLoad;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Script.HitBox
 {
@@ -9,8 +11,9 @@ namespace Script.HitBox
         [SerializeField] private string[] vulnerableTo;
         [SerializeField] private IAlive status;
         [SerializeField] private IAttack attack;
-
-        private void Start()
+        [SerializeField] private IntEvent OnTrigger;
+        
+        private void Awake()
         {
             status = GetComponent<IAlive>();
             attack = GetComponent<IAttack>();
@@ -20,16 +23,15 @@ namespace Script.HitBox
         {
             var entityHitBox = GetHitBox(other);
             if (!entityHitBox) return;
+            var pos = other.transform.position.x - transform.parent.position.x;
+            OnTrigger.Invoke(pos > 0 ? 1 : -1);
             if (status.IsVulnerable())
                 status.GetDamage(entityHitBox.Attack(transform.parent.gameObject));
             if (!status.IsAlive())
                 status.Death();
         }
 
-        private float Attack(GameObject entity)
-        {
-            return attack.Damage(entity);
-        }
+        private int Attack(GameObject entity) => attack.Damage(entity);
 
         private HitBox GetHitBox(Collider2D col)
         {

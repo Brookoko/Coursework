@@ -4,6 +4,6 @@ namespace Script.HitBox
 {
     public interface IAttack
     {
-        float Damage(GameObject target);
+        int Damage(GameObject target);
     }
 }

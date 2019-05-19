@@ -6,9 +6,9 @@ namespace Script.HitBox
 {
     public class BaseAlive : MonoBehaviour, IAlive
     {
-        [SerializeField] private float health = 5;
+        [SerializeField] private int health = 5;
         [SerializeField] private float invulnerableTime = 0.5f;
-        [SerializeField] private UnityEvent OnDamage;
+        public UnityEvent OnDamage;
         [SerializeField] private UnityEvent OnDeath;
         
         private float timer;
@@ -24,34 +24,23 @@ namespace Script.HitBox
             timer -= Time.deltaTime;
         }
         
-        public void GetDamage(float damage)
+        public void GetDamage(int damage)
         {
             if (damage <= 0) return;
-            OnDamage.Invoke();
             health -= damage;
+            OnDamage.Invoke();
             StartCoroutine(Invulnerability(invulnerableTime));
         }
 
-        public bool IsAlive()
-        {
-            return health > 0;
-        }
+        public int Health() => health;
+        
+        public bool IsAlive() => health > 0;
 
-        public void Death()
-        {
-            OnDeath.Invoke();
-            Destroy(transform.parent.gameObject);
-        }
+        public void Death() => OnDeath.Invoke();
 
-        public bool IsVulnerable()
-        {
-            return timer < 0;
-        }
+        public bool IsVulnerable() => timer < 0;
 
-        public void SetInvulnerability(float time)
-        {
-            StartCoroutine(Invulnerability(time));
-        }
+        public void SetInvulnerability(float time) => StartCoroutine(Invulnerability(time));
 
         private IEnumerator Invulnerability(float time)
         {
