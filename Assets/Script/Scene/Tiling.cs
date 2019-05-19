@@ -32,9 +32,9 @@ namespace Script.Scene
 
             var posX = cam.transform.position.x;
             if (posX >= edgeRight - offsetX && !rightBody) rightBody = AddNewBody(1);
-            else if (posX >= edgeRight + width * 2) Destroy();
+            else if (posX >= edgeRight + width * 2 + camWidth) Destroy();
             else if (posX <= edgeLeft + offsetX && !leftBody) leftBody = AddNewBody(-1);
-            else if (posX <= edgeLeft - width * 2) Destroy();
+            else if (posX <= edgeLeft - width * 2 - camWidth) Destroy();
         }
 
         private Transform AddNewBody(int side)

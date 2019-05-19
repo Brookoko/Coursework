@@ -24,10 +24,8 @@ namespace Script.Scene
         private void Update()
         {
             float paralaxX = (prevCamPos.x - cam.position.x) * scale;
-            float paralaxY = (prevCamPos.y - cam.position.y) * Mathf.Abs(scale / 3);
             float layerPosX = transform.position.x + paralaxX;
-            float layerPosY = transform.position.y + paralaxY;
-            Vector3 targetPos = new Vector3(layerPosX, layerPosY, transform.position.z);
+            Vector3 targetPos = new Vector3(layerPosX, transform.position.y, transform.position.z);
             transform.position = Vector3.Lerp(transform.position, targetPos, smoothing * Time.deltaTime);
 
             prevCamPos = cam.position;

@@ -8,22 +8,21 @@ namespace Script.Scene
         public UnityEvent OnFirstLoad;
         [SerializeField] private UnityEvent OnEnter;
         [Space]
-        [SerializeField] private CinemachineLockAxis boundry;
-        [SerializeField] private float upper;
-        [SerializeField] private float lower;
+        public float upper;
+        public float lower;
 
         private int numberOfLoading;
         
         public void SetUpScene()
         {
-            SetCinemachineBoundries();
+            SetCinemachineBoundry();
             OnEnter.Invoke();
         }
 
-        private void SetCinemachineBoundries()
+        private void SetCinemachineBoundry()
         {
-            boundry.upper = upper;
-            boundry.lower = lower;
+            GameObject obj = GameObject.FindWithTag("CM");
+            if (obj) obj.GetComponent<CinemachineLockAxis>().SetRestriction(upper, lower);
         }
     }
 }

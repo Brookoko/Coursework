@@ -6,8 +6,8 @@ namespace Script.Scene
     [ExecuteInEditMode] [SaveDuringPlay] [AddComponentMenu("")] // Hide in menu
     public class CinemachineLockAxis : CinemachineExtension
     {
-        public float upper = 10;
-        public float lower;
+        [SerializeField] private float upper = 10;
+        [SerializeField] private float lower;
  
         protected override void PostPipelineStageCallback(
             CinemachineVirtualCameraBase vcam,
@@ -25,6 +25,14 @@ namespace Script.Scene
             var pos = state.RawPosition;
             pos.y = y;
             state.RawPosition = pos;
+        }
+
+        public void SetRestriction(float upper, float lower)
+        {
+            this.upper = upper;
+            this.lower = lower;
+            GameObject.Find("FallOutController")?
+                .GetComponent<FallOutController>()?.SetBoundry(lower);
         }
     }    
 }

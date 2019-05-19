@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Script.Effects;
 using Script.Player;
 using Script.SaveLoad;
+using Script.StateMachineUtil;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,13 +11,13 @@ namespace Script.Scene
 {
     public class SceneTransition : MonoBehaviour
     {
-        private static readonly Dictionary<int, int> enters = new Dictionary<int, int>();
         private static string transition;
         private static Data[] data;
        
         private IEffect transitionEffect;
         private int levelIndex;
         private GameObject player;
+        private Vector3 gravity = Vector3.zero;
 
         private void Start()
         {
@@ -36,6 +37,7 @@ namespace Script.Scene
             SaveLoadProgress.Load();
             data = SaveLoadProgress.LoadData();
             SceneManager.LoadScene(levelIndex);
+            ChangeGravity();
         }
 
         private void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, LoadSceneMode mode)
@@ -43,6 +45,8 @@ namespace Script.Scene
             Restore(scene);
             SetScene(scene);
             Input.Enable();
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+            ChangeGravity();
         }
         
         private void Restore(UnityEngine.SceneManagement.Scene scene)
@@ -52,11 +56,15 @@ namespace Script.Scene
                 foreach (GameObject obj in scene.GetRootGameObjects())
                 {
                     Data pos = Array.Find(data, el => el.id.Equals(obj.name));
-                    if (pos != null) obj.transform.position = new Vector3(pos.position[0], pos.position[1], pos.position[2]);
+                    if (pos != null)
+                    {
+                        if (pos.position[0] > 999999)
+                            Destroy(obj);
+                        else
+                            obj.transform.position = new Vector3(pos.position[0], pos.position[1], pos.position[2]);
+                    }
                 }
             }
-            if (enters.ContainsKey(levelIndex)) enters[levelIndex]++;
-            else enters.Add(levelIndex, 0);
         }
 
         private void SetScene(UnityEngine.SceneManagement.Scene scene)
@@ -66,11 +74,17 @@ namespace Script.Scene
             if (player && enter)
             {
                 player.transform.position = enter.transform.position;
-                GameObject.Find("FallOutController")?
-                    .GetComponent<FallOutController>().SetUpEnterPoint(enter);
                 LevelEnter level = enter.GetComponent<LevelEnter>();
                 level.SetUpScene();
-                if (TimeEnter(levelIndex) == 0) level.OnFirstLoad.Invoke();
+                GameObject.Find("FallOutController")?
+                    .GetComponent<FallOutController>().SetUpEnterPoint(enter, level.lower);
+                player.GetComponentInChildren<StateMachine>().ResetStates();
+                level.OnFirstLoad.Invoke();
+            }
+            else
+            {
+                GameObject.Find("FallOutController")?
+                    .GetComponent<FallOutController>().SetUpEnterPoint(new GameObject(), 0);
             }
         }
         
@@ -83,9 +97,12 @@ namespace Script.Scene
             return name.Substring(0, dot);
         }
 
-        public static int TimeEnter(int index)
+        private void ChangeGravity()
         {
-            return enters.ContainsKey(index) ? enters[index] : 0;
+            if (player) player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            var g = Physics.gravity;
+            Physics.gravity = gravity;
+            gravity = g;
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Script.Scene
         private CinemachineVirtualCamera cam;
         private CinemachineBasicMultiChannelPerlin noise;
 
-        private void Start()
+        private void Awake()
         {
             cam = GetComponent<CinemachineVirtualCamera>();
             noise = cam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();

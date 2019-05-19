@@ -1,3 +1,4 @@
+using Script.HitBox;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,37 +11,53 @@ namespace Script.Scene
         
         private Vector3 enter;
         private Transform player;
+        private HitBox.HitBox hitBox;
         private Camera cam;
+        private float lowerBoundry;
         private bool invokeAvailable = true;
 
         private void Awake()
         {
             player = GameObject.FindGameObjectWithTag("Player").transform;
+            hitBox = player.GetComponentInChildren<HitBox.HitBox>();
         }
         
         public void OnFadeOutEnd()
         {
+            hitBox.GetComponent<BaseAlive>().SetInvulnerability(1);
             player.transform.position = enter;
             invokeAvailable = true;
             Input.Enable();
         }
 
+        private void OnEnable()
+        {
+            if (!cam) SetBoundry(0);
+            if (enter.Equals(Vector3.zero)) enter = player.transform.position;
+        }
+
         private void Update()
         {
-            if  (!cam) cam = Camera.main;
-            if (enter.Equals(Vector3.zero)) enter = player.transform.position;
-            var posY = cam.transform.position.y - cam.orthographicSize - offset;
-            if (player.transform.position.y <= posY && invokeAvailable)
+            if (player.transform.position.y <= lowerBoundry && invokeAvailable)
             {
                 invokeAvailable = false;
+                hitBox.GetComponent<IAlive>().GetDamage(1);
                 OutOfScreenEvent.Invoke();
             }
         }
         
-        public void SetUpEnterPoint(GameObject enter)
+        public void SetUpEnterPoint(GameObject enter, float lower)
         {
+            if (!enter) return;
             this.enter = enter.transform.position;
+            SetBoundry(lower);
+        }
+
+        public void SetBoundry(float lower)
+        {
             cam = Camera.main;
+            if (!cam) return;
+            lowerBoundry = lower - cam.orthographicSize - offset;
         }
     }
 }
