@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Script
+namespace Script.Cutscene
 {
     public class InputToggle : MonoBehaviour
     {
