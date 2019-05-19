@@ -14,7 +14,7 @@ namespace Script.Player
     
         private void Awake()
         {
-            player = transform.parent;
+            player = GameObject.FindWithTag("Player").transform;
             rb = player.GetComponent<Rigidbody2D>();
             sm = player.GetComponentInChildren<StateMachine>();
         }

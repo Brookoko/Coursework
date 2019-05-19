@@ -11,6 +11,8 @@ namespace Script.Player.States
 
         private float timer;
         private float gravity;
+        private float movement;
+        private bool stop;
         
         public override string Name { get; } = "Dash";
 
@@ -21,17 +23,27 @@ namespace Script.Player.States
             timer = dashTime;
             ChangeGravity();
             DashVelocity();
+            stop = false;
             return base.Enter();
         }
 
         private void Update()
         {
             if (timer < -0.2f) sm.ChangeState("Fall");
-            else if (timer < 0) rb.velocity = Vector2.zero;
-
+            else if (timer < 0 && !stop)
+            {
+                stop = true;
+                rb.velocity = Vector2.zero;
+            }
+            movement = Input.GetAxisRaw("Horizontal");
             timer -= Time.deltaTime;
         }
-        
+
+        private void FixedUpdate()
+        {
+            if (timer < 0) player.Move(movement * Time.fixedDeltaTime);
+        }
+
         private void ChangeGravity()
         {
             var g = rb.gravityScale;
@@ -57,7 +69,6 @@ namespace Script.Player.States
         public override void Exit()
         {
             ChangeGravity();
-            rb.velocity = Vector2.zero;
             base.Exit();
         }
     }

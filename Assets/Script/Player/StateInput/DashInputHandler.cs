@@ -20,7 +20,7 @@ namespace Script.Player.StateInput
             return currentDashNumber-- > 0;
         }
 
-        public override void Handle()
+        public void ResetOnGround()
         {
             if (player.IsOnGround()) ResetDash();
         }

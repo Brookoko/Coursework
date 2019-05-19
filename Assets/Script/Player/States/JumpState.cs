@@ -28,8 +28,7 @@ namespace Script.Player.States
 
         private void Update()
         {
-            if (airControl)
-                movement = Input.GetAxisRaw("Horizontal");
+            if (airControl) movement = Input.GetAxisRaw("Horizontal");
 
             if (rb.velocity.y < 0)
                 rb.velocity += Vector2.up * Physics2D.gravity.y * (gravityScale - 1) * Time.deltaTime;

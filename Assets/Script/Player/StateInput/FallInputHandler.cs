@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace Script.Player.StateInput
 {
     public class FallInputHandler : BaseInputHandler
