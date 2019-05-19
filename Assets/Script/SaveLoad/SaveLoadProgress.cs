@@ -116,6 +116,12 @@ namespace Script.SaveLoad
         {
             return progress?.data;
         }
+
+        public static void Delete()
+        {
+            SaveGame.Delete("data");
+            progress = null;
+        }
     }
     
     [Serializable]
