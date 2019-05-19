@@ -1,7 +1,7 @@
 using Script.AI;
 using UnityEngine;
 
-namespace Script
+namespace Script.AI.Reaction
 {
     public class DeadZoneReaction : MonoBehaviour, IEntityReaction
     {
@@ -33,9 +33,11 @@ namespace Script
             deadZoneTimer -= Time.deltaTime;
         }
 
-        public bool IsEntityVisible(Transform entity)
+        public Transform Entity { get; set; }
+        
+        public bool IsEntityVisible()
         {
-            bool visible = Mathf.Abs(tran.position.x - entity.position.x) > deadZone;
+            bool visible = Mathf.Abs(tran.position.x - Entity.position.x) > deadZone;
 
             if (!visible)
             {
@@ -44,7 +46,7 @@ namespace Script
                     wasInDeadZone = true;
                     deadZoneTimer = timeInDeadZoneToReact;
                 }
-                else if (deadZoneTimer < 0) Reaction(entity);
+                else if (deadZoneTimer < 0) Reaction();
             }
             else
             {
@@ -55,11 +57,11 @@ namespace Script
             return visible;
         }
 
-        public void Reaction(Transform entity)
+        public void Reaction()
         {
             if (deadZoneTimer > 0) return;
             
-            var x = tran.position.x - entity.position.x > 0 ? 1 : -1;
+            var x = tran.position.x - Entity.position.x > 0 ? 1 : -1;
             var target = tran.position + Vector3.right * x * deadZone * 100;
         
             rb.MovePosition(Vector2.MoveTowards(tran.position, target, Time.deltaTime * speedReaction));

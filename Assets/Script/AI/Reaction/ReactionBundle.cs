@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Script.AI
+namespace Script.AI.Reaction
 {
     public class ReactionBundle : MonoBehaviour, IEntityReaction
     {
@@ -16,45 +16,54 @@ namespace Script.AI
                 IEntityReaction[] behaviours = child.GetComponents<IEntityReaction>();
                 if (behaviours.Length > 0) groups.Add(behaviours);
             }
-
             visible = new bool[groups.Count];
         }
 
-        public bool IsEntityVisible(Transform entity)
+        public void SetEntity(IEntityReaction[] group)
+        {
+            foreach (IEntityReaction reaction in group)
+            {
+                reaction.Entity = Entity;
+            }
+        }
+
+        public Transform Entity { get; set; }
+        
+        public bool IsEntityVisible()
         {
             bool vis = false;
             for (int i = 0; i < groups.Count; i++)
             {
-                visible[i] = IsEntityVisibleGroup(groups[i], entity);
+                visible[i] = IsEntityVisibleGroup(groups[i]);
                 vis = vis || visible[i];
             }
             return vis;
         }
 
-        private bool IsEntityVisibleGroup(IEntityReaction[] group, Transform entity)
+        private bool IsEntityVisibleGroup(IEntityReaction[] group)
         {
             bool vis = true;
+            SetEntity(group);
             for (int i = 0; i < group.Length; i++)
             {
-                vis = vis && group[i].IsEntityVisible(entity);
+                vis = vis && group[i].IsEntityVisible();
             }
-
             return vis;
         }
 
-        public void Reaction(Transform entity)
+        public void Reaction()
         {
             for (int i = 0; i < groups.Count; i++)
             {
-                if (visible[i]) InvokeGroupReaction(groups[i], entity);
+                if (visible[i]) InvokeGroupReaction(groups[i]);
             }
         }
 
-        private void InvokeGroupReaction(IEntityReaction[] group, Transform entity)
+        private void InvokeGroupReaction(IEntityReaction[] group)
         {
             for (int j = 0; j < group.Length; j++)
             {
-                group[j].Reaction(entity);
+                group[j].Reaction();
             }
         }
     }

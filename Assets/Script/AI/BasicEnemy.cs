@@ -1,3 +1,5 @@
+using System.Linq;
+using Script.AI.Reaction;
 using Script.MoveControllers;
 using UnityEngine;
 
@@ -6,35 +8,32 @@ namespace Script.AI
     [RequireComponent(typeof(IEntityReaction), typeof(IMoveController))]
     public class BasicEnemy : MonoBehaviour , IEnemy
     {
-        protected Transform player;
         private IEntityReaction behaviourOnEntity;
         private IMoveController controller;
 
         private void Start()
         {
-            player = GameObject.FindWithTag("Player").transform;
+            if (!Entity) Entity = GameObject.FindWithTag("Player").transform;
             controller = GetComponent<IMoveController>();
-            behaviourOnEntity = GetComponent<IEntityReaction>();
+            behaviourOnEntity = GetComponents<IEntityReaction>()
+                .FirstOrDefault(react => !react.Equals(this));
+            behaviourOnEntity.Entity = Entity;
         }
 
-        public virtual bool IsEntityVisible()
-        {
-            return behaviourOnEntity.IsEntityVisible(player);
-        }
-
-        public virtual void Reaction()
-        {
-            behaviourOnEntity.Reaction(player);
-        }
-
-        public virtual void Move(float move)
-        {
-            controller.Move(move);
-        }
+        public Transform Entity { get; set; }
         
-        public virtual bool IsHitWall()
-        {
-            return false;
-        }
+        public virtual bool IsEntityVisible() => behaviourOnEntity.IsEntityVisible();
+
+        public virtual void Reaction() => behaviourOnEntity.Reaction();
+
+        public virtual void Move(float move) => controller.Move(move);
+
+        public virtual bool IsHitWall() => false;
+
+        public virtual bool IsOnGround() => false;
+
+        public virtual void Toggle() { }
+
+        public virtual bool IsFrozen() => false;
     }
 }

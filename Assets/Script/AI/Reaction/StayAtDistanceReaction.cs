@@ -1,8 +1,7 @@
 using System;
-using System.Timers;
 using UnityEngine;
 
-namespace Script.AI
+namespace Script.AI.Reaction
 {
     [Serializable]
     public class StayAtDistanceReaction : MonoBehaviour, IEntityReaction
@@ -30,9 +29,11 @@ namespace Script.AI
             }
         }
 
-        public bool IsEntityVisible(Transform entity)
+        public Transform Entity { get; set; }
+        
+        public bool IsEntityVisible()
         {
-            return DistanceToPlayer(entity) < distanceOfView * distanceOfView;
+            return DistanceToPlayer(Entity) < distanceOfView * distanceOfView;
         }
         
         private float DistanceToPlayer(Transform entity)
@@ -40,12 +41,12 @@ namespace Script.AI
             return dist = (tran.position - entity.position).sqrMagnitude;
         }
 
-        public void Reaction(Transform entity)
+        public void Reaction()
         {
             if (dist > stopDistance * stopDistance)
-                rb.MovePosition(Vector2.MoveTowards(tran.position, entity.position, speed * Time.deltaTime));
+                rb.MovePosition(Vector2.MoveTowards(tran.position, Entity.position, speed * Time.deltaTime));
             else if (dist < retreatDistance * retreatDistance)
-                rb.MovePosition(Vector2.MoveTowards(tran.position, entity.position, -speed * Time.deltaTime));
+                rb.MovePosition(Vector2.MoveTowards(tran.position, Entity.position, -speed * Time.deltaTime));
         }
     }
 }

@@ -32,9 +32,24 @@ namespace Script.Menu
             timer = time;
         }
 
-        public void setButton(string btn)
+        public void SetButton(string btn)
         {
             skipButton = btn;
+        }
+
+        private bool GetData(string* data)
+        {
+            if (string.IsNullOrEmpty(skipButton)) return false;
+            if (!skipButton.Contains("&") || !skipButton.Contains("|")) return Input.GetButtonDown(skipButton);
+            int lastSpecialSymbol = -1;
+            for (int i = 0; i < skipButton.Length; i++)
+            {
+                if (skipButton[i].Equals('&'))
+                {
+                    string value = skipButton.Substring(lastSpecialSymbol + 1, i - lastSpecialSymbol - 1);
+                    
+                }
+            }
         }
     }
 }

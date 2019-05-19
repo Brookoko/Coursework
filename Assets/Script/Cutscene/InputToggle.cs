@@ -12,5 +12,15 @@ namespace Script
             else Input.Enable();
             enable = !enable;
         }
+
+        public void Disable()
+        {
+            Input.Disable();
+        }
+
+        public void Enable()
+        {
+            Input.Enable();
+        }
     }
 }

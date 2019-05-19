@@ -1,8 +1,7 @@
 using System;
-using System.Collections;
 using UnityEngine;
 
-namespace Script.AI
+namespace Script.AI.Reaction
 {
     [Serializable]
     public class RageMoveToEntityReaction : MonoBehaviour, IEntityReaction
@@ -17,21 +16,15 @@ namespace Script.AI
         
         private void Awake()
         {
-            if (transform.CompareTag("Enemy"))
-            {
-                tran = transform;
-                enemy = GetComponent<IEnemy>();
-            }
-            else
-            {
-                tran = transform.parent;
-                enemy = tran.GetComponent<IEnemy>();
-            }
+            tran = transform.CompareTag("Enemy") ? transform : transform.parent;
+            enemy = tran.GetComponent<IEnemy>();
         }
 
-        public bool IsEntityVisible(Transform entity)
+        public Transform Entity { get; set; }
+        
+        public bool IsEntityVisible()
         {
-            var pos = entity.position - tran.position;
+            var pos = Entity.position - tran.position;
             var angle = Vector2.Angle(Vector2.right * tran.localScale.x, pos);
             var visible = pos.sqrMagnitude < distanceOfView * distanceOfView && Mathf.Abs(angle) < fieldOfView;
 
@@ -41,8 +34,9 @@ namespace Script.AI
             return visible;
         }
 
-        public void Reaction(Transform entity)
+        public void Reaction()
         {
+            if (direction == 0) direction = (int) tran.localScale.x;
             enemy.Move(rageSpeedUp * Time.deltaTime * direction);
         }
     }

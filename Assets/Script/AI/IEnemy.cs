@@ -1,10 +1,11 @@
+using Script.AI.Reaction;
+using Script.MoveControllers;
+
 namespace Script.AI
 {
-    public interface IEnemy
+    public interface IEnemy : IFreezable, IEntityReaction, IMovable
     {
-        bool IsEntityVisible();
-        void Reaction();
-        void Move(float move);
         bool IsHitWall();
+        bool IsOnGround();
     }
 }
