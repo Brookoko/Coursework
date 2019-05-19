@@ -4,6 +4,8 @@ namespace Script.Effects
 {
     public class DeathEffect : MonoBehaviour, IEffect
     {
+        [SerializeField] private bool destroyParent;
+    
         private Transform entity;
         private Animator anim;
 
@@ -25,6 +27,7 @@ namespace Script.Effects
 
         public void Stop()
         {
+            if (destroyParent && transform.parent) Destroy(transform.parent.gameObject);
             Destroy(gameObject);
         }
     }
