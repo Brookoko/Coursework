@@ -15,7 +15,7 @@ namespace Script.SaveLoad
         private static int level;
         private static float[] pos = new float[3];
 
-        public static void Save()
+        public static void Save(bool saveToFile)
         {
             Load();
             if (progress == null) progress = new Progress();
@@ -24,9 +24,12 @@ namespace Script.SaveLoad
             progress.data = ConcatArray(progress.data, sceneData);
             progress.level = level;
             progress.pos = pos;
-            SaveGame.Serializer = new SaveGameBinarySerializer();
-            SaveGame.Encode = true;
-            SaveGame.Save("data", progress);
+            if (saveToFile)
+            {
+                SaveGame.Serializer = new SaveGameBinarySerializer();
+                SaveGame.Encode = true;
+                SaveGame.Save("data", progress);     
+            }
         }
 
         private static Data[] ConcatArray(Data[] x, Data[] y)
@@ -124,5 +127,6 @@ namespace Script.SaveLoad
         public float[] pos = new float[3];
     }
     
+    [Serializable]
     public class IntEvent : UnityEvent<int> { }
 }

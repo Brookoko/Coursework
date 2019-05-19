@@ -12,7 +12,7 @@ namespace Script.SaveLoad
                 GameObject player = GameObject.FindWithTag("Player");
                 SaveLoadProgress.SetPos(SceneManager.GetActiveScene().buildIndex, player.transform.position);
             }
-            SaveLoadProgress.Save();
+            SaveLoadProgress.Save(savePosition);
         }
     }
 }

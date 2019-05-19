@@ -27,6 +27,5 @@ namespace Script.SaveLoad
     {
         public string id = "";
         public float[] position = new float[3];
- 
     }
 }
