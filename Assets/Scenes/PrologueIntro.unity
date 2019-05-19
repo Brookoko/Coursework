@@ -745,7 +745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 073538985376432fb16ba6be5b4b7a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skipButton: Submit
+  skipButton: 
   OnSkipEvent:
     m_PersistentCalls:
       m_Calls:
