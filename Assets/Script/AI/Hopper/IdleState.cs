@@ -18,7 +18,7 @@ namespace Script.AI.Hopper
 
         private void Update()
         {
-            if (timer <= 0 || enemy.IsEntityVisible()) sm.ChangeState("Jump");
+            if (!enemy.IsFrozen() && (timer <= 0 || enemy.IsEntityVisible())) sm.ChangeState("Jump");
             timer -= Time.deltaTime;
         }
     }

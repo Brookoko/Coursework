@@ -11,6 +11,7 @@ namespace Script.AI.Hopper
         
         private RaycastHit2D[] cols = new RaycastHit2D[2];
         private Rigidbody2D rb;
+        private bool frozen;
         
         private void Awake()
         {
@@ -38,12 +39,15 @@ namespace Script.AI.Hopper
             return col > 0;
         }
 
+        public override bool IsEntityVisible() => !frozen && base.IsEntityVisible();
+
         public override void Move(float move)
         {
+            if (frozen) return;
             if (Mathf.Abs(rb.velocity.y) > 0.01) return;
 
             if (IsEntityVisible())
-                move = (player.position.x - transform.position.x > 0 ? 1 : -1) * Time.deltaTime;
+                move = (Entity.position.x - transform.position.x > 0 ? 1 : -1) * Time.deltaTime;
             else if (IsHitWallFront() && transform.localScale.x * move > 0)
                 move *= -1;
             else if (IsHitWallBack() && transform.localScale.x * move < 0)
@@ -51,5 +55,12 @@ namespace Script.AI.Hopper
                 
             base.Move(move);
         }
+
+        public override void Toggle()
+        {
+            frozen = !frozen;
+        }
+
+        public override bool IsFrozen() => frozen;
     }
 }

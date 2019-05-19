@@ -19,10 +19,14 @@ namespace Script.AI.Ant
 
         private void Update()
         {
-            if (timer < 0) sm.ChangeState("Move");
-            else timer -= Time.deltaTime;
+            if (!enemy.IsFrozen() && timer < 0) sm.ChangeState("Move");
+            else if (enemy.IsEntityVisible() && enemy.IsOnGround()) sm.ChangeState("Rage");
+            timer -= Time.deltaTime;
+        }
+
+        private void FixedUpdate()
+        {
             enemy.Move(0);
-            if (enemy.IsEntityVisible()) sm.ChangeState("Rage");
         }
     }
 }

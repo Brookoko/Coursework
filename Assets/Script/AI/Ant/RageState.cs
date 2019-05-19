@@ -19,10 +19,11 @@ namespace Script.AI.Ant
 
         private void Update()
         {
-            if (enemy.IsEntityVisible()) enemy.Reaction();
+            if (timer < 0) sm.ChangeState("Idle");
+            else if (enemy.IsHitWall()) sm.ChangeState("Idle");
+            else if (!enemy.IsOnGround()) sm.ChangeState("Idle");
+            else if (enemy.IsEntityVisible()) enemy.Reaction();
             else timer -= Time.deltaTime;
-            if (timer < 0) sm.ResetStates();
-            if (enemy.IsHitWall()) sm.ChangeState("Idle");
         }
 
         public override void Exit()

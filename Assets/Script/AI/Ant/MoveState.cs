@@ -14,17 +14,17 @@ namespace Script.AI.Ant
         public override bool Enter()
         {
             anim.SetBool("Movement", true);
-            SetDirection();
+            SetDirection(false);
             return base.Enter();
         }
 
         private void Update()
         {
-            if (timer < 0) SetDirection();
-            else timer -= Time.deltaTime;
-            
-            if (enemy.IsHitWall()) SetDirection();
-            if (enemy.IsEntityVisible()) sm.ChangeState("Rage");
+            if (timer < 0) SetDirection(true);
+            else if (enemy.IsHitWall()) SetDirection(false);
+            else if (!enemy.IsOnGround()) SetDirection(true);
+            else if (enemy.IsEntityVisible() && enemy.IsOnGround()) sm.ChangeState("Rage");
+            timer -= Time.deltaTime;
         }
 
         private void FixedUpdate()
@@ -38,11 +38,15 @@ namespace Script.AI.Ant
             base.Exit();
         }
 
-        private void SetDirection()
+        private void SetDirection(bool canTransiteToIdle)
         {
-            if (Random.Range(0, 7) == 0) sm.ChangeState("Idle");
-            movement = enemy.IsHitWall() ? entity.localScale.x * -1 : Random.Range(0, 2) == 0 ? -1 : 1;
-            timer = Random.Range(moveDuration - 2f, moveDuration + 2f);
+            if (Random.Range(0, 7) == 0 && canTransiteToIdle) sm.ChangeState("Idle");
+            else
+            {
+                movement = enemy.IsHitWall() || !enemy.IsOnGround() ?
+                    entity.localScale.x * -1 : Random.Range(0, 2) == 0 ? -1 : 1;
+                timer = Random.Range(moveDuration - 2f, moveDuration + 2f);     
+            }
         }
     }
 }

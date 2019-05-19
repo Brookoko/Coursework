@@ -13,6 +13,7 @@ namespace Script.AI.Gator
         
         private float attackTimer;
         private bool wasInDeadZone;
+        private bool frozen;
      
         private RaycastHit2D[] cols = new RaycastHit2D[1];
  
@@ -28,8 +29,11 @@ namespace Script.AI.Gator
 
         public void Move()
         {
-            base.Move(transform.position.x - player.position.x);
+            if (frozen) return;
+            base.Move(transform.position.x - Entity.position.x);
         }
+
+        public override bool IsEntityVisible() => !frozen && base.IsEntityVisible();
 
         public override void Reaction()
         {
@@ -51,5 +55,12 @@ namespace Script.AI.Gator
             var offset = transform.localScale.x < 0 ? -1.5f : 1.5f;
             Instantiate(fireball, transform.position + Vector3.right * offset, Quaternion.identity, transform);
         }
+
+        public override void Toggle()
+        {
+            frozen = !frozen;
+        }
+
+        public override bool IsFrozen() => frozen;
     }
 }

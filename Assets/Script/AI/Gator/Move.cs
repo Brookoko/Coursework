@@ -14,9 +14,7 @@ namespace Script.AI.Gator
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             gator.Move();
-
-            if (gator.IsEntityVisible())
-                gator.Reaction();
+            if (gator.IsEntityVisible()) gator.Reaction();
         }
     }
 }
