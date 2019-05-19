@@ -15,18 +15,20 @@ namespace Script.Menu
         private BaseAlive playerHealth;
         private int max;
         
-        private void Awake()
+        private void Start()
         {
-            width = healthSprite.bounds.size.x * 200;
-            height = healthSprite.bounds.size.y * 200;
+            width = healthSprite.bounds.size.x * 66;
+            height = healthSprite.bounds.size.y * 66;
             playerHealth = GameObject.FindWithTag("Player").GetComponentInChildren<BaseAlive>();
             playerHealth.OnDamage.AddListener(SetHealth);
+            playerHealth.OnHeal.AddListener(SetHealth);
             max = playerHealth.Health();
             SetHealth();
         }
         
         private void SetHealth()
         {
+            DeleteHealth();
             int current = playerHealth.Health();
             for (int i = 0; i < max; i++)
             {
@@ -34,6 +36,14 @@ namespace Script.Menu
             }
         }
 
+        private void DeleteHealth()
+        {
+            foreach (Transform child in transform)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+        
         private void CreateHealth(int count, bool unharmed)
         {
             GameObject health = new GameObject(count + "");

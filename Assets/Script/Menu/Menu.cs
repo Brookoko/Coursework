@@ -29,7 +29,7 @@ namespace Script.Menu
             foreach (Transform child in transform)
             {
                 Button btn = child.GetComponent<Button>();
-                if (btn)
+                if (btn && btn.gameObject.activeInHierarchy)
                 {
                     if (gameObject.activeInHierarchy) StartCoroutine(Select(btn));
                     else btn.Select();

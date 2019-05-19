@@ -9,30 +9,30 @@ namespace Script.Menu
 {
     public class PauseMenu : MonoBehaviour
     {
-        private static bool paused;
+        private bool paused;
 
         private void Update()
         {
             if (UnityEngine.Input.GetButtonDown("Pause"))
             {
-                AffectScene();
+                AffectScene(transform.GetChild(0).gameObject);
             }
         }
         
-        public void AffectScene()
+        public void AffectScene(GameObject pauseMenu)
         {
-            StartCoroutine(AffectSceneDelay());
+            StartCoroutine(AffectSceneDelay(pauseMenu));
         }
 
-        private IEnumerator AffectSceneDelay()
+        private IEnumerator AffectSceneDelay(GameObject pauseMenu)
         {
             yield return null;
             paused = !paused;
             ToggleTime();
             ToggleInput();
-            gameObject.SetActive(paused);
+            pauseMenu.SetActive(paused);
             ToggleObjectsInScene(SceneManager.GetActiveScene());
-            ToggleObjectsInScene(gameObject.scene);
+            ToggleObjectsInScene(pauseMenu.scene);
         }
 
         private void ToggleObjectsInScene(UnityEngine.SceneManagement.Scene scene)
