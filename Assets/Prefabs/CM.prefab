@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 40
-    OrthographicSize: 9
+    OrthographicSize: 12
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
@@ -210,5 +210,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2a20632b72e4567a315f02201b67d0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upper: -0.5
-  lower: -2
+  upper: 0
+  lower: 0

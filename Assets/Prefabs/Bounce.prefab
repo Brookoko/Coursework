@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 317372754996614953}
   m_Layer: 14
   m_Name: Bounce
-  m_TagString: PlayerAttackHitBox
+  m_TagString: PlayerHitBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63,6 +63,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vulnerableTo: []
+  OnTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Script.SaveLoad.IntEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &7206580592103446772
 MonoBehaviour:
   m_ObjectHideFlags: 0
