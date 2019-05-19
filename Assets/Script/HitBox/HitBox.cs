@@ -31,7 +31,7 @@ namespace Script.HitBox
                 status.Death();
         }
 
-        private int Attack(GameObject entity) => attack.Damage(entity);
+        private int Attack(GameObject entity) => attack?.Damage(entity) ?? 0;
 
         private HitBox GetHitBox(Collider2D col)
         {
