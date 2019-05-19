@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Timers;
+using Script.Scene;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 namespace Script.Menu
@@ -13,24 +15,24 @@ namespace Script.Menu
         {
             if (UnityEngine.Input.GetButtonDown("Pause"))
             {
-                AffectScene(transform.GetChild(0).gameObject);
+                AffectScene();
             }
         }
         
-        public void AffectScene(GameObject pauseMenu)
+        public void AffectScene()
         {
-            StartCoroutine(AffectSceneDelay(pauseMenu));
+            StartCoroutine(AffectSceneDelay());
         }
 
-        private IEnumerator AffectSceneDelay(GameObject pauseMenu)
+        private IEnumerator AffectSceneDelay()
         {
             yield return null;
             paused = !paused;
             ToggleTime();
             ToggleInput();
-            pauseMenu.SetActive(paused);
+            gameObject.SetActive(paused);
             ToggleObjectsInScene(SceneManager.GetActiveScene());
-            ToggleObjectsInScene(pauseMenu.scene);
+            ToggleObjectsInScene(gameObject.scene);
         }
 
         private void ToggleObjectsInScene(UnityEngine.SceneManagement.Scene scene)

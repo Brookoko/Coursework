@@ -12,14 +12,14 @@ namespace Script.Menu
         [SerializeField] private Image image;
         [SerializeField] private UnityEvent OnEnd;
         
-        private Skippable skip;
+        private Skipable skip;
         private PopUpImage current;
         private int index = 1;
 
         private void Awake()
         {
             current = dialogue[0];
-            skip = GetComponent<Skippable>();
+            skip = GetComponent<Skipable>();
         }
 
         public void Display()
@@ -46,7 +46,7 @@ namespace Script.Menu
             if (current.skippable)
             {
                 skip.SetTime(current.timeOnScreen);
-                skip.setButton(current.skipButton);                
+                skip.SetButton(current.skipButton);                
             }
         }
 
@@ -60,7 +60,7 @@ namespace Script.Menu
         public void Fade()
         {
             skip.SetTime(float.PositiveInfinity);
-            skip.setButton("");
+            skip.SetButton("");
             StopAllCoroutines();
             if (current.fadeMode == 0) StartCoroutine(Fading());
         }

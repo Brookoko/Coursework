@@ -18,15 +18,21 @@ namespace Script.Menu
         {
             SelectFirstButton();
         }
+        
+        private void OnDisable()
+        {
+            SelectFirstButton();
+        }
 
-        private void SelectFirstButton()
+        public void SelectFirstButton()
         {
             foreach (Transform child in transform)
             {
                 Button btn = child.GetComponent<Button>();
                 if (btn)
                 {
-                    StartCoroutine(Select(btn));
+                    if (gameObject.activeInHierarchy) StartCoroutine(Select(btn));
+                    else btn.Select();
                     break;
                 }
             }

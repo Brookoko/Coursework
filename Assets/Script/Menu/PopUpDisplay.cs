@@ -10,15 +10,17 @@ namespace Script.Menu
         [SerializeField] private PopUp[] dialogue;
         [SerializeField] private TextMeshProUGUI textDisplay;
         [SerializeField] private UnityEvent OnEnd;
-        
-        private Skippable skip;
+
+        private InputConverter convert = new InputConverter();
+        private Skipable skip;
         private PopUp current;
         private int index = 1;
+        private string unchangedString;
 
         private void Awake()
         {
             current = dialogue[0];
-            skip = GetComponent<Skippable>();
+            skip = GetComponent<Skipable>();
         }
 
         public void Display()
@@ -26,6 +28,7 @@ namespace Script.Menu
             SetAlpha(1);
             textDisplay.text = "";
             textDisplay.font = current.font;
+            current.text = ReplaceData();
             if (current.displayMode == 0) StartCoroutine(DisplayFading());
             else if (current.displayMode == 1) StartCoroutine(DisplayLetterByLetter());
         }
@@ -42,7 +45,7 @@ namespace Script.Menu
 
             if (current.skippable)
             {
-                skip.setButton(current.skipButton);
+                skip.SetButton(current.skipButton);
                 skip.SetTime(current.timeOnScreen);
             }
         }
@@ -68,7 +71,7 @@ namespace Script.Menu
             }
             if (current.skippable)
             {
-                skip.setButton(current.skipButton);
+                skip.SetButton(current.skipButton);
                 skip.SetTime(current.timeOnScreen);
             }
         }
@@ -76,8 +79,9 @@ namespace Script.Menu
         public void Fade()
         {
             skip.SetTime(float.PositiveInfinity);
-            skip.setButton("");
+            skip.SetButton("");
             StopAllCoroutines();
+            current.text = unchangedString;
             if (current.fadeMode == 0) StartCoroutine(Fading());
             else if (current.fadeMode == 1) StartCoroutine(FadeLetterByLetter());
         }
@@ -104,6 +108,18 @@ namespace Script.Menu
             current = index < dialogue.Length ? dialogue[index++] : null;
             if (current) Display();
             else OnEnd.Invoke();
+        }
+
+        private string ReplaceData()
+        {
+            string text = current.text;
+            unchangedString = text;
+            int first = text.IndexOf('`');
+            int last = text.LastIndexOf('`');
+            if (first < 0 || last < 0 || last == first) return current.text;
+            string sub = text.Substring(first + 1, last - first - 1);
+            string replacement = convert.ConvertToString(Input.GetValue(sub));
+            return text.Replace("`" + sub + "`", replacement);
         }
     }
 }
