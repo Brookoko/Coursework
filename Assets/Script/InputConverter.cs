@@ -61,5 +61,10 @@ namespace Script
         {
             return convert.ContainsKey(value) ? convert[value] : "";
         }
+
+        public string ConvertToString(string value)
+        {
+            return convert.FirstOrDefault(x => x.Value.Equals(value)).Key;
+        }
     }
 }

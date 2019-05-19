@@ -36,6 +36,7 @@ namespace Script.StateMachineUtil
 
         public void ResetStates()
         {
+            if (states == null) return;
             ChangeState(states[0].Name);
         }
     }

@@ -9,7 +9,7 @@ namespace Script
             GameObject[] objs = GameObject.FindGameObjectsWithTag(gameObject.tag);
             foreach (var obj in objs)
             {
-                Destroy(obj);
+                if (obj.GetComponent<DestroyEvent>()) Destroy(obj);
             }
         }
     }

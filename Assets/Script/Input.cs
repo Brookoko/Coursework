@@ -27,7 +27,8 @@ namespace Script
         {
             {"Jump", "space"},
             {"Dash", "c"},
-            {"Crouch", "left ctrl"}
+            {"Crouch", "left ctrl"},
+            {"Heal", "z"}
         };
         
         public static Dictionary<string, bool> tableOfAvailability = new Dictionary<string, bool>();
