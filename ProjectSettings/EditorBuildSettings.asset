@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 65a903497675ad16eb6855c808ef7e0c
@@ -24,6 +21,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Fall.unity
     guid: d3cccbe065f84741dacc12b18b95d5e7
   - enabled: 1
-    path: Assets/Scenes/Tree.unity
+    path: Assets/Scenes/Falling.unity
     guid: 2da86e89f19375e5e8818104b71cf11b
+  - enabled: 1
+    path: Assets/Scenes/Chase.unity
+    guid: 079110ed35b9170e0936838cedb1347f
+  - enabled: 1
+    path: Assets/Scenes/TreeEnter.unity
+    guid: 67aa5f329bf9c26ef895465cfc4baa91
+  - enabled: 1
+    path: Assets/Scenes/Tree.unity
+    guid: 0f0d517092c28d5d8bd0c15d07396154
   m_configObjects: {}

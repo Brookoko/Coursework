@@ -27,10 +27,10 @@ TagManager:
   - Background
   - Player
   - Enemy
-  - PlayerHitbox
-  - "EnemyH\x13itbox"
   - PlayerAttack
   - EnemyAttack
+  - PlayerHitbox
+  - EnemyHitbox
   - Projectiles
   - 
   - 
