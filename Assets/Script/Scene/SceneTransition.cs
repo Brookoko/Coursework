@@ -51,18 +51,16 @@ namespace Script.Scene
         
         private void Restore(UnityEngine.SceneManagement.Scene scene)
         {
-            if (data != null)
+            if (data == null) return;
+            foreach (GameObject obj in scene.GetRootGameObjects())
             {
-                foreach (GameObject obj in scene.GetRootGameObjects())
+                Data pos = Array.Find(data, el => el.id.Equals(obj.name));
+                if (pos != null)
                 {
-                    Data pos = Array.Find(data, el => el.id.Equals(obj.name));
-                    if (pos != null)
-                    {
-                        if (pos.position[0] > 999999)
-                            Destroy(obj);
-                        else
-                            obj.transform.position = new Vector3(pos.position[0], pos.position[1], pos.position[2]);
-                    }
+                    if (pos.position[0] > 999999)
+                        Destroy(obj);
+                    else
+                        obj.transform.position = new Vector3(pos.position[0], pos.position[1], pos.position[2]);
                 }
             }
         }

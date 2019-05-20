@@ -82,7 +82,6 @@ namespace Script.SaveLoad
         private static SerializedProperty FindAxis(SerializedProperty axes, string axisName)
         {
             if (!AxisDefined(axisName)) return null;
-            
             return FindInArray(axes, axisName);
         }
         

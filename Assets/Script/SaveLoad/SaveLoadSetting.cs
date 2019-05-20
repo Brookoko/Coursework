@@ -8,6 +8,8 @@ namespace Script.SaveLoad
         
         private void Start()
         {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
             Input.SetButton("Jump", convert.ConvertToCode(PlayerPrefs.GetInt("Jump", -1)));
             Input.SetButton("Dash", convert.ConvertToCode(PlayerPrefs.GetInt("Dash", -1)));
             Input.SetButton("Crouch", convert.ConvertToCode(PlayerPrefs.GetInt("Crouch", -1)));

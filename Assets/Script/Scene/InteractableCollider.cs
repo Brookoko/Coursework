@@ -10,8 +10,6 @@ namespace Script.Scene
         
         private void OnCollisionEnter2D(Collision2D other)
         {
-            Debug.Log(gameObject.name);
-            Debug.Log(other.gameObject.tag + ":" + other.gameObject.name);
             if (other.gameObject.CompareTag(tag))
             {
                 OnTriggerEvent.Invoke();

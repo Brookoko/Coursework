@@ -27,7 +27,6 @@ namespace Script.Scene
             float layerPosX = transform.position.x + paralaxX;
             Vector3 targetPos = new Vector3(layerPosX, transform.position.y, transform.position.z);
             transform.position = Vector3.Lerp(transform.position, targetPos, smoothing * Time.deltaTime);
-
             prevCamPos = cam.position;
         }
     }

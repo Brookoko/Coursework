@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace Script.HitBox
 {
     public interface IAlive

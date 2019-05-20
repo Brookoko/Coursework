@@ -12,6 +12,8 @@ namespace Script
         {
             score += points;
             onValueChange.Invoke(score);
-        }        
+        }
+
+        public int GetScore() => score;
     }
 }

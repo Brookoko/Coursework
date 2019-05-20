@@ -24,7 +24,9 @@ namespace Script
         
         private void Update()
         {
-            if (Input.GetButtonDown("Heal") && status.IsAlive() && timer < 0) StartCoroutine(Healing());
+            if (Input.GetButtonDown("Heal") &&
+                status.IsAlive() && timer < 0 &&
+                score.GetScore() > 0) StartCoroutine(Healing());
             if (Input.GetButtonUp("Heal")) StopAllCoroutines();
             timer -= Time.deltaTime;
         }

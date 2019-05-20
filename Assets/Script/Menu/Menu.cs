@@ -24,7 +24,7 @@ namespace Script.Menu
             SelectFirstButton();
         }
 
-        public void SelectFirstButton()
+        private void SelectFirstButton()
         {
             foreach (Transform child in transform)
             {

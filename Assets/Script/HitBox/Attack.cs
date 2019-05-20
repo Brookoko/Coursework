@@ -6,9 +6,6 @@ namespace Script.HitBox
     {
         [SerializeField] private int damage = 1;
 
-        public virtual int Damage(GameObject target)
-        {
-            return damage;
-        }
+        public virtual int Damage(GameObject target) => damage;
     }
 }

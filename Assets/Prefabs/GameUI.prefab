@@ -2003,6 +2003,7 @@ GameObject:
   - component: {fileID: 4881760447926257979}
   - component: {fileID: 5909730431573557775}
   - component: {fileID: 3911289852187756236}
+  - component: {fileID: 533035492125275994}
   m_Layer: 5
   m_Name: LevelTransition
   m_TagString: Untagged
@@ -2145,6 +2146,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 533035492125275994}
+        m_MethodName: Clear
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 5838360150392834432}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   OnFadeOutIn:
@@ -2152,6 +2164,19 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &533035492125275994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338066470271840600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd532828594240e788947402974a2d65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curtain: {fileID: 5856723965293239062, guid: 389be7e83611b1c3bbdfcb608bf8bd9c, type: 3}
 --- !u!1 &1527639924094295326
 GameObject:
   m_ObjectHideFlags: 0
