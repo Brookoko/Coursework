@@ -25,9 +25,12 @@ namespace Script.StateMachineUtil
             var state = states.FirstOrDefault(s => s.Name == stateName);
             if (state == null) throw new Exception("Invalid state name");
             
-            if (!state.Enter()) return;
-            if (current.Equals(state)) return;
             current.Exit();
+            if (!state.Enter())
+            {
+                ResetStates();
+                return;
+            }
             current = state;
         }
 

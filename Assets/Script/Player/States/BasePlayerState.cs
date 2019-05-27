@@ -1,51 +1,41 @@
-using Script.Effects;
 using Script.StateMachineUtil;
-using Script.MoveControllers;
+using Script.Player.StateInput;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Script.Player.States
 {
-    public class BasePlayerState : BaseState
+    public class BasePlayerState : MonoBehaviour, IState
     {
-        [SerializeField] private UnityEvent onLandEvent;
-        protected GameObject player;
-        protected StateMachine sm;
-        protected PlayerSMStats stats;
-        protected Animator animator;
-        protected MoveController controller;
-        protected Rigidbody2D rb;
-        protected IEffect effect;
+        [SerializeField] private UnityEvent OnEnter;
+        [SerializeField] private UnityEvent OnExit;
 
-        private Collider2D[] cols = new Collider2D[1];
-        private bool wasOnGround;
-        
+        protected Player player;
+        protected StateMachine sm;
+        protected Rigidbody2D rb;
+        protected IInputHandler input;
+
         protected void Awake() {
-            player = GameObject.FindGameObjectWithTag("Player");
-            sm = player.GetComponentInChildren<StateMachine>();
-            stats = sm.GetComponent<PlayerSMStats>();
-            controller = player.GetComponent<MovementController>();
-            animator = player.GetComponent<Animator>();
-            rb = player.GetComponent<Rigidbody2D>();
-            effect = GetComponent<IEffect>();
+            var obj = GameObject.FindGameObjectWithTag("Player");
+            player = obj.GetComponent<Player>();
+            sm = obj.GetComponentInChildren<StateMachine>();
+            rb = obj.GetComponent<Rigidbody2D>();
+            input = GetComponent<IInputHandler>();
             enabled = false;
         }
 
-        public bool IsOnGround()
-        {
-            var col = Physics2D.OverlapCircleNonAlloc(stats.groundCheck.position, stats.radius, cols, stats.whatIsGround);
-            if (col > 0 && !wasOnGround) onLandEvent.Invoke();
-            return wasOnGround = col > 0;
-        }
+        public virtual string Name { get; } = "Base";
 
-        public override bool Enter()
+        public virtual bool Enter()
         {
             enabled = true;
+            OnEnter.Invoke();
             return true;
         }
 
-        public override void Exit()
+        public virtual void Exit()
         {
+            OnExit.Invoke();
             enabled = false;
         }
     }  

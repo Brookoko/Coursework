@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Script.HitBox
 {
@@ -7,16 +8,15 @@ namespace Script.HitBox
     {
         [SerializeField] private float health = 5;
         [SerializeField] private float invulnerableTime = 0.5f;
-        [SerializeField] private float toggleTime = 0.1f;
+        [SerializeField] private UnityEvent OnDamage;
+        [SerializeField] private UnityEvent OnDeath;
         
         private float timer;
-        private SpriteRenderer render;
-        private Color color;
+        private Collider2D col;
         
         private void Awake()
         {
-            render = transform.parent.GetComponent<SpriteRenderer>();
-            color = render.color;
+            col = GetComponent<Collider2D>();
         }
 
         private void Update()
@@ -24,42 +24,41 @@ namespace Script.HitBox
             timer -= Time.deltaTime;
         }
         
-        public virtual void GetDamage(float damage)
+        public void GetDamage(float damage)
         {
+            if (damage <= 0) return;
+            OnDamage.Invoke();
             health -= damage;
-            timer = invulnerableTime;
-            StartCoroutine(Blinking());
+            StartCoroutine(Invulnerability(invulnerableTime));
         }
 
-        public virtual bool IsAlive()
+        public bool IsAlive()
         {
             return health > 0;
         }
 
-        public virtual void OnDeath()
+        public void Death()
         {
+            OnDeath.Invoke();
             Destroy(transform.parent.gameObject);
         }
 
-        public virtual bool IsVulnerable()
+        public bool IsVulnerable()
         {
-            return !(timer > 0);
-        }
-        
-        protected IEnumerator Blinking()
-        {
-            while (timer > 0)
-            {
-                ReverseAlpha();
-                yield return new WaitForSeconds(toggleTime);
-            }
-            render.color = new Color(color.r, color.g, color.b, 1);
+            return timer < 0;
         }
 
-        private void ReverseAlpha()
+        public void SetInvulnerability(float time)
         {
-            render.color = new Color(color.r, color.g, color.b, color.a < 1 ? 1 : 0.3f);
-            color = render.color;
+            StartCoroutine(Invulnerability(time));
+        }
+
+        private IEnumerator Invulnerability(float time)
+        {
+            timer = time;
+            col.enabled = false;
+            yield return new WaitForSeconds(time);
+            col.enabled = true;
         }
     }
 }

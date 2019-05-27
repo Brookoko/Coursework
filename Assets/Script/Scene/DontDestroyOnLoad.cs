@@ -8,8 +8,7 @@ namespace Script.Scene
         {
             GameObject[] objs = GameObject.FindGameObjectsWithTag(gameObject.tag);
             
-            if (objs.Length > 1)
-                Destroy(gameObject);
+            if (objs.Length > 1) Destroy(gameObject);
             
             DontDestroyOnLoad(gameObject);
         }

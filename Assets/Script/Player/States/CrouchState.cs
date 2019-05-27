@@ -13,7 +13,6 @@ namespace Script.Player.States
 
         public override bool Enter()
         {
-            animator.SetBool("isCrouching", true);
             if (colliderToDisable) colliderToDisable.enabled = false;
             return base.Enter();
         }
@@ -21,21 +20,16 @@ namespace Script.Player.States
         private void Update()
         {
             movement = Input.GetAxisRaw("Horizontal") * crouchSpeed;
-            if (Input.GetButtonDown("Dash"))
-                sm.ChangeState("Dash");
+            input.Handle();
         }
 
         private void FixedUpdate()
         {
-            var col = Physics2D.OverlapCircle(stats.ceilingCheck.position, stats.radius, stats.whatIsGround);
-            if (!(col || Input.GetButton("Crouch"))) sm.ChangeState("Idle");
-        
-            controller.Move(movement * Time.fixedDeltaTime);
+            player.Move(movement * Time.fixedDeltaTime);
         }
 
         public override void Exit()
         {
-            animator.SetBool("isCrouching", false);
             if (colliderToDisable) colliderToDisable.enabled = true;
             base.Exit();
         }

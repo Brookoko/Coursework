@@ -34,45 +34,6 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!114 &114314061799349032
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b06c70420cb370a4780b2eeb32de53a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeToWait: 2.5
---- !u!114 &114467045716209478
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c24928720d08cc4e8b2dbaab5eccceec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rageTime: 2
---- !u!114 &114867248448653400
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42e76b49a6104475bad0dd0eb4d79d8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveDuration: 3
 --- !u!1101 &1101197836389509908
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -211,8 +172,7 @@ AnimatorState:
   m_Transitions:
   - {fileID: 1101658157429263068}
   - {fileID: 1101553138525416458}
-  m_StateMachineBehaviours:
-  - {fileID: 114867248448653400}
+  m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -239,8 +199,7 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101197836389509908}
-  m_StateMachineBehaviours:
-  - {fileID: 114467045716209478}
+  m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -268,8 +227,7 @@ AnimatorState:
   m_Transitions:
   - {fileID: 1101556975016106098}
   - {fileID: 1101548296421705210}
-  m_StateMachineBehaviours:
-  - {fileID: 114314061799349032}
+  m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1

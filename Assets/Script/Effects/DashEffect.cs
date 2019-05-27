@@ -11,6 +11,7 @@ namespace Script.Effects
 
         private Transform player;
         private ParticleSystem particle;
+        private Animator animator;
         private TrailRenderer trail;
         private Vector3 pos;
         private Coroutine cor;
@@ -20,22 +21,24 @@ namespace Script.Effects
             player = GameObject.FindWithTag("Player").transform;
             particle = GetComponent<ParticleSystem>();
             trail = GetComponent<TrailRenderer>();
+            trail.enabled = false;
+            animator = player.GetComponent<Animator>();
         }
 
         public void Play()
         {
+            animator.SetBool("isDashing", true);
             particle.Play();
             trail.enabled = true;
             StartCoroutine(shake.Shake(0.4f, 2f, 0.4f));
             pos = player.position;
-            cor = StartCoroutine(Trail());
         }
 
         public void Stop()
         {
+            animator.SetBool("isDashing", false);           
             trail.enabled = false;
             particle.Stop();
-            StopCoroutine(cor);
         }
 
         private IEnumerator Trail()

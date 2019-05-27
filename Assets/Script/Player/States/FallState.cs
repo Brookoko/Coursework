@@ -5,38 +5,29 @@ namespace Script.Player.States
     public class FallState : BasePlayerState
     {
         [SerializeField] private bool airControl;
-
+        [SerializeField] private GameObject attack;
+        
         private float movement;
         
         public override string Name { get; } = "Fall";
 
         public override bool Enter()
         {
-            animator.SetBool("isFalling", true);
+            Instantiate(attack, player.transform);
             return base.Enter();
         }
 
         private void Update()
         {
+            if (player.IsOnGround()) sm.ChangeState("Idle");
             movement = Input.GetAxisRaw("Horizontal");
-            rb.velocity = Vector2.MoveTowards(rb.velocity, new Vector2(0, rb.velocity.y), 0.6f);
-            IsOnGround();
-            if (Input.GetButtonDown("Jump"))
-                sm.ChangeState("Jump");
-            else if (Input.GetButtonDown("Dash"))
-                sm.ChangeState("Dash");
+            player.Move(0);
+            input.Handle();
         }
 
         private void FixedUpdate()
         {
-            if (airControl)
-                controller.Move(movement * Time.fixedDeltaTime);
-        }
-
-        public override void Exit()
-        {
-            animator.SetBool("isFalling", false);
-            base.Exit();
+            if (airControl) player.Move(movement * Time.fixedDeltaTime);
         }
     }
 }

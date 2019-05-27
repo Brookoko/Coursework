@@ -40,14 +40,13 @@ namespace Script.AI.Hopper
 
         public override void Move(float move)
         {
-            if (Mathf.Abs(rb.velocity.y) > 0.01)
-                return;
-               
+            if (Mathf.Abs(rb.velocity.y) > 0.01) return;
+
             if (IsEntityVisible())
                 move = (player.position.x - transform.position.x > 0 ? 1 : -1) * Time.deltaTime;
-            else if (IsHitWallFront() && transform.forward.x * move > 0)
+            else if (IsHitWallFront() && transform.localScale.x * move > 0)
                 move *= -1;
-            else if (IsHitWallBack() && transform.forward.x * move < 0)
+            else if (IsHitWallBack() && transform.localScale.x * move < 0)
                 move *= -1;
                 
             base.Move(move);

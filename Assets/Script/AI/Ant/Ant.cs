@@ -12,7 +12,7 @@ namespace Script.AI.Ant
         
         public override bool IsHitWall()
         {
-            var col = Physics2D.RaycastNonAlloc(wallChecker.position, transform.forward, cols, distance, whatIsBarrier);
+            var col = Physics2D.RaycastNonAlloc(wallChecker.position, Vector2.right  * transform.localScale.x, cols, distance, whatIsBarrier);
             
             return col > 0;
         }

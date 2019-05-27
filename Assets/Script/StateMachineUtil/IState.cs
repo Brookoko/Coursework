@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace Script.StateMachineUtil
 {
     public interface IState {

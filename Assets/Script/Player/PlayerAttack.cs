@@ -15,6 +15,11 @@ namespace Script.Player
             rb = player.GetComponent<Rigidbody2D>();
         }
 
+        private void Update()
+        {
+            transform.position = player.position;
+        }
+
         private void OnTriggerEnter2D(Collider2D other)
         {
             rb.velocity = new Vector2(rb.velocity.x, bounceForce);
