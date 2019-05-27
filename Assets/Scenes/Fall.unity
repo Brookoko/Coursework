@@ -1084,6 +1084,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6e53a39295b132e8a1e45a38d5ca638, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tag: Player
   OnTriggerEvent:
     m_PersistentCalls:
       m_Calls:
@@ -1267,6 +1268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6e53a39295b132e8a1e45a38d5ca638, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tag: Player
   OnTriggerEvent:
     m_PersistentCalls:
       m_Calls:
@@ -9258,6 +9260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6e53a39295b132e8a1e45a38d5ca638, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tag: Player
   OnTriggerEvent:
     m_PersistentCalls:
       m_Calls:
@@ -9433,6 +9436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6e53a39295b132e8a1e45a38d5ca638, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tag: Player
   OnTriggerEvent:
     m_PersistentCalls:
       m_Calls:
@@ -15657,6 +15661,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6e53a39295b132e8a1e45a38d5ca638, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tag: Player
   OnTriggerEvent:
     m_PersistentCalls:
       m_Calls: []

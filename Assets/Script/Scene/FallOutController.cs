@@ -40,8 +40,15 @@ namespace Script.Scene
         {
             if (player.transform.position.y <= lowerBoundry && invokeAvailable)
             {
+                var status = hitBox.GetComponent<IAlive>();
                 invokeAvailable = false;
-                hitBox.GetComponent<IAlive>().GetDamage(1);
+                status.GetDamage(1);
+                if (!status.IsAlive())
+                {
+                    gameObject.SetActive(false);
+                    Input.Disable();
+                    return;
+                }
                 OutOfScreenEvent.Invoke();
             }
         }

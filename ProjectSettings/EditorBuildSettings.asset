@@ -32,4 +32,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tree.unity
     guid: 0f0d517092c28d5d8bd0c15d07396154
+  - enabled: 1
+    path: Assets/Scenes/Branch.unity
+    guid: 004b51a9f8c4615e595dd38c9a75c9a8
+  - enabled: 1
+    path: Assets/Scenes/Demo.unity
+    guid: 1eb5ceb3c3518c607bffe516a85b8482
   m_configObjects: {}

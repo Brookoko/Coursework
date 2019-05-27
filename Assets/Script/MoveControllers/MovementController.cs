@@ -13,6 +13,7 @@ namespace Script.MoveControllers
         private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
+            if (transform.localScale.x < 0) facingRight = false;
         }
 
         public void Move(float move)

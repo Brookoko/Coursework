@@ -2134,7 +2134,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0.23529412, b: 0.49411765, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2504,6 +2504,11 @@ PrefabInstance:
     - target: {fileID: 5838360149680321681, guid: fa25c0f7a03425f8ca144d767ac7175d,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6480510801013590797, guid: fa25c0f7a03425f8ca144d767ac7175d,
+        type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3911289852187756236, guid: fa25c0f7a03425f8ca144d767ac7175d,
@@ -2908,13 +2913,14 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 6480510801013590797, guid: fa25c0f7a03425f8ca144d767ac7175d,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa25c0f7a03425f8ca144d767ac7175d, type: 3}
+--- !u!1 &1818815646 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2086080389015958179, guid: fa25c0f7a03425f8ca144d767ac7175d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1818815645}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1868817361
 GameObject:
   m_ObjectHideFlags: 0
@@ -20847,11 +20853,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CM
       objectReference: {fileID: 0}
-    - target: {fileID: 3365657481085821917, guid: f75491f1a072db3a0aef4d989adf3b08,
-        type: 3}
-      propertyPath: m_Follow
-      value: 
-      objectReference: {fileID: 1800676073}
     - target: {fileID: 3365657481085821916, guid: f75491f1a072db3a0aef4d989adf3b08,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20907,6 +20908,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3365657481085821917, guid: f75491f1a072db3a0aef4d989adf3b08,
+        type: 3}
+      propertyPath: m_Follow
+      value: 
+      objectReference: {fileID: 1800676073}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f75491f1a072db3a0aef4d989adf3b08, type: 3}
 --- !u!1001 &4135869473271167144
@@ -20975,6 +20981,76 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3351615040431783634, guid: 99d0d7b07f903d660abc71354a42c138,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3351615040431783634, guid: 99d0d7b07f903d660abc71354a42c138,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3351615040431783634, guid: 99d0d7b07f903d660abc71354a42c138,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3351615040431783634, guid: 99d0d7b07f903d660abc71354a42c138,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3351615040431783634, guid: 99d0d7b07f903d660abc71354a42c138,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3351615040431783634, guid: 99d0d7b07f903d660abc71354a42c138,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3351615040431783634, guid: 99d0d7b07f903d660abc71354a42c138,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3351615040431783634, guid: 99d0d7b07f903d660abc71354a42c138,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1956572410}
+    - target: {fileID: 3351615040431783634, guid: 99d0d7b07f903d660abc71354a42c138,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3351615040431783634, guid: 99d0d7b07f903d660abc71354a42c138,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3351615040431783634, guid: 99d0d7b07f903d660abc71354a42c138,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1818815646}
+    - target: {fileID: 3351615040431783634, guid: 99d0d7b07f903d660abc71354a42c138,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3351615040431783634, guid: 99d0d7b07f903d660abc71354a42c138,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3351615040431783634, guid: 99d0d7b07f903d660abc71354a42c138,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1866372130, guid: 99d0d7b07f903d660abc71354a42c138, type: 3}
       propertyPath: shake

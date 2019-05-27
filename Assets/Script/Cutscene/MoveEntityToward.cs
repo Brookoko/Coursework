@@ -13,7 +13,7 @@ namespace Script.Cutscene
         
         private void Start()
         {
-            entity = GameObject.FindWithTag(tag);
+            entity = string.IsNullOrEmpty(tag) ? gameObject : GameObject.FindWithTag(tag);
             rb = entity.GetComponent<Rigidbody2D>();
         }
 
@@ -26,11 +26,12 @@ namespace Script.Cutscene
         private IEnumerator MoveToward(float speed)
         {
             Vector3 cur = entity.transform.position;
-            while (Mathf.Abs(cur.x - target.x) > 0.1f &&
+            while (Mathf.Abs(cur.x - target.x) > 0.1f ||
                    Mathf.Abs(cur.y - target.y) > 0.1f)
             {
                 cur = entity.transform.position =
                     Vector3.MoveTowards(cur, target, speed);
+                Debug.Log(cur);
                 yield return null;
             }
         }

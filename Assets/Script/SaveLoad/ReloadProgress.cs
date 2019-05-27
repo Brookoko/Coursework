@@ -14,6 +14,5 @@ namespace Script.SaveLoad
             SaveLoadProgress.Delete();
             SaveLoadProgress.Load();
         }
-        
     }
 }

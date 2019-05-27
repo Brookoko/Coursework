@@ -81,7 +81,6 @@ namespace Script.Menu
             skip.SetTime(float.PositiveInfinity);
             skip.SetButton("");
             StopAllCoroutines();
-            current.text = unchangedString;
             if (current.fadeMode == 0) StartCoroutine(Fading());
             else if (current.fadeMode == 1) StartCoroutine(FadeLetterByLetter());
         }

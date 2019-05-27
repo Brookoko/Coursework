@@ -107,6 +107,14 @@ namespace Script.SaveLoad
             OnLoad.Invoke(progress.level);
         }
 
+        public static void Reload()
+        {
+            if (!SaveGame.Exists("data")) return;
+            SaveGame.Serializer = new SaveGameBinarySerializer();
+            SaveGame.Encode = true;
+            progress = SaveGame.Load<Progress>("data");
+        }
+
         public static Table LoadTable()
         {
             return progress?.table;
@@ -119,6 +127,7 @@ namespace Script.SaveLoad
 
         public static void Delete()
         {
+            if (!SaveGame.Exists("data")) return;
             SaveGame.Delete("data");
             progress = null;
         }

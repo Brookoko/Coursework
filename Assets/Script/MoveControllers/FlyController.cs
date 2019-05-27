@@ -12,9 +12,10 @@ namespace Script.MoveControllers
         private Vector2 vec = Vector2.zero;
         private Rigidbody2D rb;
     
-        private void Start()
+        private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
+            if (transform.localScale.x < 0) facingRight = false;
         }
 
         public void Move(float move)

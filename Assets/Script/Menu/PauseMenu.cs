@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Timers;
+using Script.HitBox;
 using Script.Scene;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -10,10 +11,16 @@ namespace Script.Menu
     public class PauseMenu : MonoBehaviour
     {
         private bool paused;
+        private IAlive status;
+        
+        private void Awake()
+        {
+            status = GameObject.FindWithTag("Player").GetComponentInChildren<IAlive>();
+        }
 
         private void Update()
         {
-            if (UnityEngine.Input.GetButtonDown("Pause"))
+            if (UnityEngine.Input.GetButtonDown("Pause") && status.IsAlive())
             {
                 AffectScene(transform.GetChild(0).gameObject);
             }

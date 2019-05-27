@@ -10,6 +10,8 @@ namespace Script
         public void Clear(GameObject onDontDestroyObject)
         {
             Instantiate(curtain);
+            if (onDontDestroyObject == null) onDontDestroyObject = GameObject.FindWithTag("Player");
+            if (onDontDestroyObject == null) return;
             foreach (GameObject obj in onDontDestroyObject.scene.GetRootGameObjects())
             {
                 Destroy(obj);

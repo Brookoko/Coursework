@@ -27,8 +27,6 @@ namespace Script.HitBox
             OnTrigger.Invoke(pos > 0 ? 1 : -1);
             if (status.IsVulnerable())
                 status.GetDamage(entityHitBox.Attack(transform.parent.gameObject));
-            if (!status.IsAlive())
-                status.Death();
         }
 
         private int Attack(GameObject entity) => attack?.Damage(entity) ?? 0;

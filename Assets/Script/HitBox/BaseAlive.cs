@@ -37,8 +37,12 @@ namespace Script.HitBox
                 OnHeal.Invoke();
                 return;
             }
-            OnDamage.Invoke();
-            StartCoroutine(Invulnerability(invulnerableTime));
+            if (!IsAlive()) Death();
+            else
+            {
+                OnDamage.Invoke();
+                StartCoroutine(Invulnerability(invulnerableTime));
+            }
         }
 
         public int Health() => current;

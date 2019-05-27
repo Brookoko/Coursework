@@ -40,6 +40,7 @@ namespace Script.Menu
         private bool GetData()
         {
             if (string.IsNullOrEmpty(skipButton)) return false;
+            if (skipButton.Equals("$ANY")) return UnityEngine.Input.anyKeyDown;
             if (!skipButton.Contains("&")) return Input.GetButtonDown(skipButton);
             bool res = true;
             int lastSpecialSymbol = -1;

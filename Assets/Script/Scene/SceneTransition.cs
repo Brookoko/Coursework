@@ -19,7 +19,7 @@ namespace Script.Scene
         private GameObject player;
         private Vector3 gravity = Vector3.zero;
 
-        private void Start()
+        private void Awake()
         {
             transitionEffect = GetComponent<IEffect>();
             SceneManager.sceneLoaded += OnSceneLoaded;

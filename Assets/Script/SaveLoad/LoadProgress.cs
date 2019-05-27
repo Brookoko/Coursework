@@ -6,7 +6,8 @@ namespace Script.SaveLoad
     public class LoadProgress : MonoBehaviour
     {
         [SerializeField] private SceneTransition manager;
-
+        [SerializeField] private bool reload;
+        
         private void Awake()
         {
             SaveLoadProgress.OnLoad.RemoveAllListeners();
@@ -18,6 +19,7 @@ namespace Script.SaveLoad
         {
             SaveLoadProgress.OnLoad.RemoveAllListeners();
             SaveLoadProgress.OnLoad.AddListener(manager.Load);
+            if (reload) SaveLoadProgress.Reload();
             SaveLoadProgress.Load();
         }
     }

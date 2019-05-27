@@ -19,7 +19,8 @@ namespace Script.AI.Ant
 
         private void Update()
         {
-            if (!enemy.IsFrozen() && timer < 0) sm.ChangeState("Move");
+            if (enemy.IsFrozen()) return;
+            if (timer < 0) sm.ChangeState("Move");
             else if (enemy.IsEntityVisible() && enemy.IsOnGround()) sm.ChangeState("Rage");
             timer -= Time.deltaTime;
         }

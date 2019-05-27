@@ -15,7 +15,7 @@ MonoBehaviour:
   text: Belka Adventure
   font: {fileID: 11400000, guid: c234114be96a55ffa910b90b459e246a, type: 2}
   skippable: 1
-  skipButton: Submit
+  skipButton: $ANY
   timeOnScreen: Infinity
   displayMode: 0
   fadeMode: 0
