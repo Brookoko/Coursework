@@ -15,6 +15,12 @@ namespace Script.SaveLoad
         private static int level;
         private static float[] pos = new float[3];
 
+        static SaveLoadProgress()
+        {
+            SaveGame.Serializer = new SaveGameBinarySerializer();
+            SaveGame.Encode = true;
+        }
+
         public static void Save(bool saveToFile)
         {
             Load();
@@ -24,12 +30,7 @@ namespace Script.SaveLoad
             progress.data = ConcatArray(progress.data, sceneData);
             progress.level = level;
             progress.pos = pos;
-            if (saveToFile)
-            {
-                SaveGame.Serializer = new SaveGameBinarySerializer();
-                SaveGame.Encode = true;
-                SaveGame.Save("data", progress);     
-            }
+            if (saveToFile) SaveGame.Save("data", progress);     
         }
 
         private static Data[] ConcatArray(Data[] x, Data[] y)
@@ -89,6 +90,8 @@ namespace Script.SaveLoad
             pos[0] = position.x;
             pos[0] = position.y;
             pos[0] = position.z;
+            Score status = GameObject.FindWithTag("Player")?.GetComponent<Score>();
+            if (status) progress.score = status.GetScore();
         }
         
         public static void Load()
@@ -100,9 +103,13 @@ namespace Script.SaveLoad
             }
             if (progress == null)
             {
-                SaveGame.Serializer = new SaveGameBinarySerializer();
-                SaveGame.Encode = true;
                 progress = SaveGame.Load<Progress>("data");
+                Score status = GameObject.FindWithTag("Player")?.GetComponent<Score>();
+                if (status)
+                {
+                    status.AddScore(int.MinValue);
+                    status.AddScore(progress.score);
+                }
             }
             OnLoad.Invoke(progress.level);
         }
@@ -110,8 +117,6 @@ namespace Script.SaveLoad
         public static void Reload()
         {
             if (!SaveGame.Exists("data")) return;
-            SaveGame.Serializer = new SaveGameBinarySerializer();
-            SaveGame.Encode = true;
             progress = SaveGame.Load<Progress>("data");
         }
 
@@ -140,6 +145,7 @@ namespace Script.SaveLoad
         public Table table = new Table();
         public int level;
         public float[] pos = new float[3];
+        public int score;
     }
     
     [Serializable]

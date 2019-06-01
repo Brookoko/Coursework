@@ -130,7 +130,7 @@ PrefabInstance:
     - target: {fileID: 5046996427718744456, guid: 5fc2e2d58bff43b51bd1e43e85233514,
         type: 3}
       propertyPath: m_Name
-      value: Acorn
+      value: Acorn0
       objectReference: {fileID: 0}
     - target: {fileID: 7379611509204343718, guid: 5fc2e2d58bff43b51bd1e43e85233514,
         type: 3}
@@ -189,6 +189,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fc2e2d58bff43b51bd1e43e85233514, type: 3}
+--- !u!1 &16277014 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5046996427718744456, guid: 5fc2e2d58bff43b51bd1e43e85233514,
+    type: 3}
+  m_PrefabInstance: {fileID: 16277013}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &16277015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16277014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44162845e5f44b9b9687e249f2320816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &99681173
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,17 +685,6 @@ MonoBehaviour:
   OnTriggerEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 441581155}
-        m_MethodName: Load
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 7
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 406405159}
         m_MethodName: Remove
         m_Mode: 1
@@ -696,6 +703,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 441581155}
+        m_MethodName: Load
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 7
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 2691895051063225785}
   - component: {fileID: 9030551538779574291}
   - component: {fileID: 3148161001329004458}
+  - component: {fileID: 9095584250734766908}
   m_Layer: 0
   m_Name: Acorn
   m_TagString: Untagged
@@ -307,3 +308,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 10
+--- !u!114 &9095584250734766908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5046996427718744456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44162845e5f44b9b9687e249f2320816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

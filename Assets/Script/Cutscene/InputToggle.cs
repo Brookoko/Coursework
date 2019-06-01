@@ -10,17 +10,18 @@ namespace Script.Cutscene
         {
             if (enable) Input.Disable();
             else Input.Enable();
-            enable = !enable;
         }
 
         public void Disable()
         {
             Input.Disable();
+            enable = true;
         }
 
         public void Enable()
         {
             Input.Enable();
+            enable = false;
         }
     }
 }

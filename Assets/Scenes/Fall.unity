@@ -9545,6 +9545,10 @@ PlayableDirector:
     value: {fileID: 1169994651}
   - key: {fileID: 6175321319458258847, guid: da6619eceb50d278dbe53f883aeabc8b, type: 2}
     value: {fileID: 528295398}
+  - key: {fileID: -1066562532645457343, guid: da6619eceb50d278dbe53f883aeabc8b, type: 2}
+    value: {fileID: 612858132}
+  - key: {fileID: -2893954774440490310, guid: da6619eceb50d278dbe53f883aeabc8b, type: 2}
+    value: {fileID: 612858132}
   m_ExposedReferences:
     m_References:
     - d64662a035afd0c99984bb83243cb6ee: {fileID: 141972184}
@@ -9879,7 +9883,7 @@ PrefabInstance:
     - target: {fileID: 3365657481085821916, guid: f75491f1a072db3a0aef4d989adf3b08,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.0663514
+      value: 6.066352
       objectReference: {fileID: 0}
     - target: {fileID: 3365657481085821916, guid: f75491f1a072db3a0aef4d989adf3b08,
         type: 3}
@@ -14917,7 +14921,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0.23529412, b: 0.49411765, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -16743,7 +16747,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1794215467}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 326659700}

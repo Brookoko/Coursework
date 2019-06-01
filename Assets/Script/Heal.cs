@@ -14,6 +14,7 @@ namespace Script
         private Score score;
         private IAlive status;
         private float timer;
+        private bool zero;
 
         private void Awake()
         {
@@ -35,6 +36,7 @@ namespace Script
         {
             yield return new WaitForSeconds(0.5f);
             timer = timeBtwHeal;
+            zero = false;
             score.onValueChange.AddListener(GetScore);
             for (int i = 0; i < pointsToHeal; i++)
             {
@@ -46,12 +48,12 @@ namespace Script
 
         private void GetScore(int points)
         {
-            if (points < 0)
+            if (points == 0 && zero)
             {
                 StopAllCoroutines();
                 score.onValueChange.RemoveListener(GetScore);                
-                score.AddScore(-points);
             }
+            if (points == 0) zero = true;
         }
     }
 }

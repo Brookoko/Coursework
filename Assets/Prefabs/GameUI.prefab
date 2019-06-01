@@ -172,6 +172,7 @@ GameObject:
   - component: {fileID: 565951365}
   - component: {fileID: 565951364}
   - component: {fileID: 565951363}
+  - component: {fileID: 6886862445350683526}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -301,8 +302,32 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 6886862445350683526}
+        m_MethodName: ReloadLast
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &6886862445350683526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565951361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f0ccc3b8a8e4c2a81c4e60d6d96a001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 0}
 --- !u!1 &745543006
 GameObject:
   m_ObjectHideFlags: 0
@@ -2439,28 +2464,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5909730431573557775}
         m_MethodName: OnComplete
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5838360151301709815}
-        m_MethodName: AffectScene
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 2016641226888507444}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5838360151301709815}
-        m_MethodName: ToggleTime
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

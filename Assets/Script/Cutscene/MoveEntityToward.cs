@@ -31,7 +31,6 @@ namespace Script.Cutscene
             {
                 cur = entity.transform.position =
                     Vector3.MoveTowards(cur, target, speed);
-                Debug.Log(cur);
                 yield return null;
             }
         }

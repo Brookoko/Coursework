@@ -14,5 +14,9 @@ namespace Script.SaveLoad
             SaveLoadProgress.Delete();
             SaveLoadProgress.Load();
         }
+        
+        public void ReloadLast() {
+            SaveLoadProgress.Reload();
+        }
     }
 }
