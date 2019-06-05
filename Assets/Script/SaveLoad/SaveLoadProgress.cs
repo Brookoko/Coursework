@@ -14,6 +14,7 @@ namespace Script.SaveLoad
         private static Progress progress;
         private static int level;
         private static float[] pos = new float[3];
+        private static int score;
 
         static SaveLoadProgress()
         {
@@ -30,6 +31,7 @@ namespace Script.SaveLoad
             progress.data = ConcatArray(progress.data, sceneData);
             progress.level = level;
             progress.pos = pos;
+            progress.score = score;
             if (saveToFile) SaveGame.Save("data", progress);     
         }
 
@@ -91,7 +93,7 @@ namespace Script.SaveLoad
             pos[0] = position.y;
             pos[0] = position.z;
             Score status = GameObject.FindWithTag("Player")?.GetComponent<Score>();
-            if (status) progress.score = status.GetScore();
+            if (status) score = status.GetScore();
         }
         
         public static void Load()

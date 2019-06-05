@@ -21,7 +21,8 @@ namespace Script.Player.States
             if (!input.ValidateInput()) return false;
             Instantiate(attackHitBox, player.transform);
             timer = dashTime;
-            ChangeGravity();
+            gravity = rb.gravityScale;
+            rb.gravityScale = 0;
             DashVelocity();
             stop = false;
             return base.Enter();
@@ -44,13 +45,6 @@ namespace Script.Player.States
             if (timer < 0) player.Move(movement * Time.fixedDeltaTime);
         }
 
-        private void ChangeGravity()
-        {
-            var g = rb.gravityScale;
-            rb.gravityScale = gravity;
-            gravity = g;
-        }
-        
         private void DashVelocity()
         {
             rb.velocity = Vector2.zero;
@@ -68,7 +62,8 @@ namespace Script.Player.States
 
         public override void Exit()
         {
-            ChangeGravity();
+            rb.gravityScale = gravity;
+            rb.velocity = Vector2.zero;
             base.Exit();
         }
     }
