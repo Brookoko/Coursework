@@ -9,13 +9,17 @@ namespace Script
         
         public void Clear(GameObject onDontDestroyObject)
         {
-            Instantiate(curtain);
-            if (onDontDestroyObject == null) onDontDestroyObject = GameObject.FindWithTag("Player");
-            if (onDontDestroyObject == null) return;
+            if (curtain) Instantiate(curtain);
+            if (!onDontDestroyObject) return;
             foreach (GameObject obj in onDontDestroyObject.scene.GetRootGameObjects())
             {
                 Destroy(obj);
             }
+        }
+
+        public void Clear(Object obj)
+        {
+            Clear(GameObject.FindWithTag("Player"));
         }
     }
 }
